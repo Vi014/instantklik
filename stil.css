@@ -1,0 +1,79 @@
+@import "reset.css";
+
+#tabela_tabela
+{
+	border-collapse: collapse;
+	border:          solid 4px black;
+}
+
+#tabela_zaglavlje
+{
+	background: #444444;
+	color:      white;
+}
+
+#tabela_tabela td, #tabela_tabela th
+{
+	height:         40px;
+	vertical-align: middle;
+	font-family:    Inconsolata, Consolas, monospace;
+	font-size:      14pt;
+	border:         solid 1px black;
+}
+
+.tabela_rb
+{
+	text-align: center;
+	width:      50px;
+	/*padding:    0 5px 0 5px;*/
+}
+
+.tabela_naziv
+{
+	width:   450px;
+	padding: 0 0 0 10px;
+}
+
+.tabela_trajanje
+{
+	width:      90px;
+	text-align: center;
+}
+
+.tabela_godina
+{
+	width:      70px;
+	text-align: center;
+}
+
+.tabela_napomena
+{
+	width:   400px;
+	padding: 0 0 0 10px;
+}
+
+#albumi_tabela
+{
+	margin: 10px 0 0 10px;
+}
+
+#gornji
+{
+	margin: 10px 0 0 10px;
+	font-family: Inconsolata, Consolas, monospace;
+	font-size: 14pt;
+}
+
+#gornji select
+{
+	width: 250px;
+	font-family: Inconsolata, Consolas, monospace;
+	font-size: 12pt;
+	margin: 0 0 10px 0;
+}
+
+#gornji div
+{
+	//display: inline;
+	margin: 0 0 10px 0;
+}
