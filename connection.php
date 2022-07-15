@@ -1,12 +1,12 @@
 <?php
-    $ImeServera = "localhost";
-    $UIDServer  = "root";
-    $PWDServer  = "";
-    $ImeBaze    = "cd_kolekcija";
+    $ServerName   = "localhost";
+    $UIDServer    = "root";
+    $PWDServer    = "";
+    $DatabaseName = "instantklik";
    
-    $Veza = mysqli_connect($ImeServera, $UIDServer, $PWDServer, $ImeBaze);
+    $Connection = mysqli_connect($ServerName, $UIDServer, $PWDServer, $DatabaseName);
    
-    if($Veza)
+    if($Connection)
     {
         /*echo "Uspesno ste se povezali sa bazom.<br><br>";
         echo "Sledi prijava korisnika...";*/

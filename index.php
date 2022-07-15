@@ -1,27 +1,39 @@
-<!Doctype HTML>
+<!DOCTYPE html>
 
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>AJAX - Albumi</title>
-		<link rel="icon" href="Slike/layers-128.ico"/>
-		<link rel="stylesheet" type="text/css" href="stil.css"/>
+		<title>Instantklik</title>
+		<link rel="icon" href="images/IK-smalltransparent.png"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 
 	<body>
-		</div id="okvir">	
-			<div id="gornji">
-				<div>IZVOĐAČ</div>
-				<select id="izvodjaci" onchange="pronadjiAlbume()"></select>
-				<div>ALBUM</div>
-				<select id="albumi"    onchange="pronadjiPesme()"></select>
-			</div>
+		<div id="links"></div>
+
+		<script src="script.js"></script>
+
+		<?php
+			$profile = $_GET['profile'];
+
+			// include_once('query.php');
+
+			include_once('connection.php');
+	
+			$Query  = "SELECT TipNaloga.ImeTipa, TipNaloga.Slika, Nalog.Link 
+				FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
+				INNER JOIN TipNaloga ON Nalog.TipID = TipNaloga.TipID
+				WHERE Korisnik.Username = $profile";
+			$Result = mysqli_query($Connection, $Query);
 			
-			<div id="donji">
-				<div id="albumi_tabela">
-				</div>
-			</div>
-		</div>
-	<script src="skripta.js"></script>
+			while($Row = mysqli_fetch_assoc($Result))
+			{
+				$ImeTipa = $Row['ImeTipa'];
+				$Slika   = $Row['Slika'];
+				$Link 	 = $Row['Link'];
+				
+				echo "<a href='$Link'><img style='height: 50px; width: 50px;' src='$Slika'></a> <br>";
+			}
+		?>
 	</body>
 </html>
