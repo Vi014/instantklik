@@ -1,38 +1,36 @@
+<?php
+	session_start();
+	// session_unset();
+?>
+
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<title>Instantklik</title>
+
 		<link rel="icon" href="images/IK-smalltransparent.png"/>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	</head>
 
 	<body>
+		<a href="login.php">Login</a>
+		<br>
+		<a href="register.php">Registracija</a>
+
 		<div id="links"></div>
 
-		<script src="script.js"></script>
+		<script src="js/script.js"></script>
 
 		<?php
-			$profile = $_GET['profile'];
-
-			// include_once('query.php');
-
-			include_once('connection.php');
-	
-			$Query  = "SELECT TipNaloga.ImeTipa, TipNaloga.Slika, Nalog.Link 
-				FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
-				INNER JOIN TipNaloga ON Nalog.TipID = TipNaloga.TipID
-				WHERE Korisnik.Username = $profile";
-			$Result = mysqli_query($Connection, $Query);
-			
-			while($Row = mysqli_fetch_assoc($Result))
+			if(isset($_GET['profile']))
 			{
-				$ImeTipa = $Row['ImeTipa'];
-				$Slika   = $Row['Slika'];
-				$Link 	 = $Row['Link'];
-				
-				echo "<a href='$Link'><img style='height: 50px; width: 50px;' src='$Slika'></a> <br>";
+				$_SESSION['profile'] = $_GET['profile'];
+				include_once('query.php');
 			}
 		?>
 	</body>
