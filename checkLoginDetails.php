@@ -14,7 +14,7 @@
 	{
         while($Row = mysqli_fetch_assoc($Result))
         {
-            $pwdHash = $Row['password'];
+            $pwdHash = $Row['password']; // sifra za sve placeholder naloge je "password"
         }
 
         if(password_verify($password, $pwdHash))
