@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) 
+    {
+        session_start();
+    }
 
     include_once('connection.php');
 
@@ -19,7 +22,12 @@
 		{
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $pwdHash;
+			setcookie("username", $username, time()+60*60*24*30*6);
+            setcookie("password", $pwdHash,  time()+60*60*24*30*6);
+
 			echo "Kreiranje naloga uspešno obavljeno!";
+
+			header("location: editProfile.php");
 		}
 		else
 		{

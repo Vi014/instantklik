@@ -1,6 +1,8 @@
 <?php
-    session_start();
-    // session_unset();
+    if (session_status() === PHP_SESSION_NONE) 
+    {
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +17,9 @@
 
         <link rel="icon" href="images/IK-smalltransparent.png"/>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>!window.jQuery && document.write('<script src="js\/jquery.min.js"><\/script>')</script>
     </head>
 
     <body>

@@ -1,6 +1,8 @@
 <?php
-	session_start();
-	// session_unset();
+	if (session_status() === PHP_SESSION_NONE) 
+    {
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,72 +25,70 @@
         <?php
             include_once('connection.php');
 
-            echo "<form action='executeProfileUpdate.php' method='post'>";
-
-            $username = $_SESSION['username'];
-            $_SESSION['Nalozi'] = array();
-
-
-            $Query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
-                FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
-                              INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
-                WHERE korisnik.username = '$username'";
-	        $Result   = mysqli_query($Connection, $Query);
-
-            while($Row = mysqli_fetch_assoc($Result))
+            if(isset($_SESSION['username']))
             {
-                $NalogID = $Row['NalogID'];
-                $ImeTipa = $Row['ImeTipa'];
-                $Link 	 = $Row['Link'];
+                echo "<form action='executeProfileUpdate.php' method='post'>";
 
-                array_push($_SESSION['Nalozi'], $NalogID);
-                
-                echo $ImeTipa;
-                echo "<input type='text' name='$NalogID' required='true' value='$Link'>";
-                echo "<input type='button' data-id='$NalogID' class='deleteButton' value='Obriši'>";
+                echo "Da bi ste obrisali neki link sa Vašeg profila, ostavite njegovo polje za unos teksta praznim pri kliku na dugme Unos podataka <br>";
+    
+                $username = $_SESSION['username'];
+                $_SESSION['Nalozi'] = array();
+    
+    
+                $Query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
+                    FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
+                                  INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
+                    WHERE korisnik.username = '$username'";
+                $Result = mysqli_query($Connection, $Query);
+    
+                while($Row = mysqli_fetch_assoc($Result))
+                {
+                    $NalogID = $Row['NalogID'];
+                    $ImeTipa = $Row['ImeTipa'];
+                    $Link 	 = $Row['Link'];
+    
+                    array_push($_SESSION['Nalozi'], $NalogID);
+                    
+                    echo $ImeTipa;
+                    echo "<input type='text' name='$NalogID' value='$Link'>";
+                    echo "<br>";
+                }
+    
+                echo "<input type='submit' value='Unos podataka'>";
+                echo "</form>";
+    
+    
+    
+                echo "<form action='addNewProfile.php' method='post'>";
+    
+                $Query = "SELECT TipNaloga.TipID, TipNaloga.ImeTipa 
+                    FROM TipNaloga";
+                $Result = mysqli_query($Connection, $Query);
+    
+                echo "<select name='TipID'>";
+    
+                while($Row = mysqli_fetch_assoc($Result))
+                {
+                    $TipID   = $Row['TipID'];
+                    $ImeTipa = $Row['ImeTipa'];
+    
+                    echo "<option value='$TipID'>$ImeTipa</option>";
+                }
+    
+                echo "<input type='text' name='link' required='true'>";
+                echo "<input type='submit' value='Dodaj novi link'>";
+                echo "</form>";
+
+
+
+                echo "<a href='logout.php'>Izlogujte se</a>";
                 echo "<br>";
+                echo "<a href='deleteAccount.php'>Obriši nalog</a>";
             }
-
-            echo "<input type='submit' value='Unos podataka'>";
-            echo "</form>";
-        ?>
-        <!-- <input type='button' data-id='1' class='deleteButton' value='Obriši' onclick='amogus()'> -->
-
-        <script language="javascript">
-            $('.deleteButton').click(
-                                        function (event) 
-                                        {
-                                            event.preventDefault();
-                                            var id = $(this).data('id');
-                                            // alert(id);
-                                            $.ajax( // sve pre ovog radi kako valja // ??? sta ovde fali???
-                                                    {
-                                                        url: "removeLink.php",
-                                                        method: "POST",
-                                                        dataType: "text",
-                                                        data: { 'id': id },
-                                                        success: function (html) 
-                                                        {
-                                                            //$(this).parent().parent().remove();
-                                                            // $(this).text(html);
-                                                            alert(id);
-                                                        },
-                                                        error: function(xhr, status, error)
-                                                        {
-                                                            console.log(xhr);
-                                                            console.log(status);
-                                                            console.log(error);
-                                                        }
-                                                    }
-                                                );
-                                        }
-                                    );
-            /* function amogus(event)
+            else
             {
-                event.preventDefault();
-                var id = $(this).data('id');
-                alert(id);
-            } */
-        </script>
+                echo "Niste ulogovani! Vratite se na <a href='index.php'>glavnu stranicu</a> da bi ste se ulogovali.";
+            }
+        ?>
     </body>
 </html>

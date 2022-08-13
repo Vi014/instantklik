@@ -6,15 +6,13 @@
 
     include_once('connection.php');
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $Query    = "SELECT korisnik.username, korisnik.password FROM korisnik WHERE korisnik.username = '$username'";
-	$Result   = mysqli_query($Connection, $Query);
-	$RowCount = mysqli_num_rows($Result);
-
-    if($RowCount > 0)
+    if(password_verify($_POST['password'], $_SESSION['password']))
 	{
+        /* 
+        $Query    = "DELETE FROM korisnik WHERE korisnik.username = '$username'";
+        $Result   = mysqli_query($Connection, $Query);
+        $RowCount = mysqli_num_rows($Result);
+
         while($Row = mysqli_fetch_assoc($Result))
         {
             $pwdHash = $Row['password']; // sifra za sve placeholder naloge je "password"
@@ -38,10 +36,11 @@
         else
         {
             echo "Pogrešna šifra!";
-        }
+        } */
+        echo "sifra tacna";
 	}
 	else
 	{
-		echo "Greška, ne postoji korisnik sa unetim imenom.";
+		echo "Pogrešno uneta šifra! Vratite se na <a href='deleteAccount.php'>prethodnu stranicu</a>.";
 	}
 ?>
