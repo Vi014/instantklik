@@ -24,9 +24,9 @@
 
     <body>
         <form action="createAccount.php" method="post">
-				<input type="text"     name="username" required="true" placeholder="Korisničko ime">
-				<input type="password" name="password" required="true" placeholder="Lozinka">
-				<input type="submit" value="Kreiraj nalog">
+            <input type="text"     name="username" required="true" placeholder="Korisničko ime">
+            <input type="password" name="password" required="true" placeholder="Lozinka">
+            <input type="submit" value="Kreiraj nalog">
 		</form>
     </body>
 </html>

@@ -15,7 +15,7 @@
 
     if($RowCount == 0)
 	{
-        $Query = "INSERT INTO korisnik (username, password) VALUES ('$username', '$pwdHash')";
+        $Query 	  = "INSERT INTO korisnik (username, password) VALUES ('$username', '$pwdHash')";
 		$Rezultat = mysqli_query($Connection, $Query);
 		
 		if($Rezultat)

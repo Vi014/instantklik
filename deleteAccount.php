@@ -24,8 +24,8 @@
     <body>
         Da bi ste potvrdili brisanje naloga, unesite svoju šifru još jedanput:
         <form action="deleteQuery.php" method="post">
-				<input type="password" name="password" required="true">
-				<input type="submit" value="Obriši">
+            <input type="password" name="password" required="true">
+            <input type="submit" value="Obriši">
 		</form>
     </body>
 </html>

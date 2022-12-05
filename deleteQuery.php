@@ -8,36 +8,29 @@
 
     if(password_verify($_POST['password'], $_SESSION['password']))
 	{
-        /* 
-        $Query    = "DELETE FROM korisnik WHERE korisnik.username = '$username'";
-        $Result   = mysqli_query($Connection, $Query);
-        $RowCount = mysqli_num_rows($Result);
+        echo "Uneta šifra je ispravna. Sledi brisanje naloga... <br>";
+        
+        $username = $_SESSION['username'];
 
-        while($Row = mysqli_fetch_assoc($Result))
+        $Query  = "DELETE FROM korisnik WHERE korisnik.username = '$username'";
+        $Result = mysqli_query($Connection, $Query);
+
+        if ($Result)
         {
-            $pwdHash = $Row['password']; // sifra za sve placeholder naloge je "password"
-        }
+            echo "Instantklik nalog uspešno obrisan. Uskoro ćete biti prebačeni na naslovnu stranu... <br>";
 
-        if(password_verify($password, $pwdHash))
-        {
-            echo "Prijava uspešna!";
+            unset($_SESSION['username']);
+            unset($_SESSION['password']);
 
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $pwdHash;
-            
-            if(isset($_POST['rememberMe']))
-            {
-                setcookie("username", $username, time()+60*60*24*30*6);
-                setcookie("password", $pwdHash,  time()+60*60*24*30*6);
-            }
+            setcookie('username', 'asdf', 1);
+            setcookie('password', 'asdf', 1);
 
-            header("location: editProfile.php");
+            header("location: index.php");
         }
         else
         {
-            echo "Pogrešna šifra!";
-        } */
-        echo "sifra tacna";
+            echo "Došlo je do greške! <br>";
+        }
 	}
 	else
 	{

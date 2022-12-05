@@ -24,10 +24,10 @@
 
     <body>
         <form action="checkLoginDetails.php" method="post">
-				<input type="text"     name="username" required="true" placeholder="Korisničko ime">
-				<input type="password" name="password" required="true" placeholder="Lozinka">
-                <input type="checkbox" name="rememberMe">Upamti me
-				<input type="submit" value="Prijava">
+            <input type="text"     name="username" required="true" placeholder="Korisničko ime">
+            <input type="password" name="password" required="true" placeholder="Lozinka">
+            <input type="checkbox" name="rememberMe">Upamti me
+            <input type="submit" value="Prijava">
 		</form>
     </body>
 </html>
