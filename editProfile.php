@@ -19,6 +19,8 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>!window.jQuery && document.write('<script src="js\/jquery.min.js"><\/script>')</script>
+
+        <script src="js/deleteLinkedProfile.js"></script>
     </head>
 
     <body>
@@ -28,8 +30,6 @@
             if(isset($_SESSION['username']))
             {
                 echo "<form action='executeProfileUpdate.php' method='post'>";
-
-                echo "Da bi ste obrisali neki link sa Vašeg profila, ostavite njegovo polje za unos teksta praznim pri kliku na dugme Unos podataka <br>";
     
                 $username = $_SESSION['username'];
                 $_SESSION['Nalozi'] = array();
@@ -51,6 +51,7 @@
                     
                     echo $ImeTipa;
                     echo "<input type='text' name='$NalogID' value='$Link'>";
+                    echo "<input type='button' onclick='deleteLinkedProfile($NalogID)' value='Obriši'>";
                     echo "<br>";
                 }
     
