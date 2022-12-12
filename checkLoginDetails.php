@@ -9,15 +9,20 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $Query    = "SELECT korisnik.username, korisnik.password FROM korisnik WHERE korisnik.username = '$username'";
-	$Result   = mysqli_query($Connection, $Query);
+    $Query = "SELECT Korisnik.Username, Korisnik.Password 
+              FROM Korisnik 
+              WHERE Korisnik.Username = ?";
+    $stmt = $Connection->prepare($Query);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $Result = $stmt->get_result();
 	$RowCount = mysqli_num_rows($Result);
 
     if($RowCount > 0)
 	{
         while($Row = mysqli_fetch_assoc($Result))
         {
-            $pwdHash = $Row['password']; // sifra za sve placeholder naloge je "password"
+            $pwdHash = $Row['Password']; // sifra za sve placeholder naloge je "password"
         }
 
         if(password_verify($password, $pwdHash))

@@ -8,7 +8,6 @@ function deleteLinkedProfile(NalogID)
             data: "NalogID=" + NalogID,
             success: function(data) 
             {
-                // alert(data);
                 window.location = 'editProfile.php';
             },
             error: function() 

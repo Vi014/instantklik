@@ -12,10 +12,14 @@
         
         $username = $_SESSION['username'];
 
-        $Query  = "DELETE FROM korisnik WHERE korisnik.username = '$username'";
-        $Result = mysqli_query($Connection, $Query);
+        $Query = "DELETE FROM Korisnik 
+                  WHERE Korisnik.Username = ?";
+        $stmt = $Connection->prepare($Query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $errorCode = mysqli_stmt_errno($stmt);
 
-        if ($Result)
+        if (!$errorCode)
         {
             echo "Instantklik nalog uspešno obrisan. Uskoro ćete biti prebačeni na naslovnu stranu... <br>";
 
@@ -29,7 +33,7 @@
         }
         else
         {
-            echo "Došlo je do greške! <br>";
+            echo "Došlo je do greške: kod $errorCode <br>";
         }
 	}
 	else

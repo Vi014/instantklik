@@ -9,7 +9,9 @@
     $PWDServer    = "";
     $DatabaseName = "instantklik";
    
-    $Connection = mysqli_connect($ServerName, $UIDServer, $PWDServer, $DatabaseName);
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    $Connection = new mysqli($ServerName, $UIDServer, $PWDServer, $DatabaseName);
+    $Connection->set_charset('utf8mb4');
    
     if($Connection)
     {
@@ -18,10 +20,13 @@
             $cookieUsername = $_COOKIE['username'];
             $cookiePassword = $_COOKIE['password'];
 
-            $Query = "SELECT *
-                FROM Korisnik 
-                WHERE Korisnik.Username = '$cookieUsername' AND Korisnik.Password = '$cookiePassword'";
-            $Result = mysqli_query($Connection, $Query);
+            $Query = "SELECT * 
+                      FROM Korisnik 
+                      WHERE Korisnik.Username = ? AND Korisnik.Password = ?";
+            $stmt = $Connection->prepare($Query);
+            $stmt->bind_param('ss', $cookieUsername, $cookiePassword);
+            $stmt->execute();
+            $Result = $stmt->get_result();
             $RowCount = mysqli_num_rows($Result);
 
             if($RowCount > 0)

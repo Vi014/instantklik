@@ -34,12 +34,14 @@
                 $username = $_SESSION['username'];
                 $_SESSION['Nalozi'] = array();
     
-    
                 $Query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
-                    FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
-                                  INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
-                    WHERE korisnik.username = '$username'";
-                $Result = mysqli_query($Connection, $Query);
+                          FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
+                                        INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
+                          WHERE Korisnik.Username = ?";
+                $stmt = $Connection->prepare($Query);
+                $stmt->bind_param('s', $username);
+                $stmt->execute();
+                $Result = $stmt->get_result();
     
                 while($Row = mysqli_fetch_assoc($Result))
                 {
@@ -63,8 +65,11 @@
                 echo "<form action='addNewProfile.php' method='post'>";
     
                 $Query = "SELECT TipNaloga.TipID, TipNaloga.ImeTipa 
-                    FROM TipNaloga";
-                $Result = mysqli_query($Connection, $Query);
+                          FROM TipNaloga";
+                $stmt = $Connection->prepare($Query);
+                // $stmt->bind_param('s', $username);
+                $stmt->execute();
+                $Result = $stmt->get_result();
     
                 echo "<select name='TipID'>";
     
