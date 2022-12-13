@@ -34,26 +34,26 @@
                 $username = $_SESSION['username'];
                 $_SESSION['Nalozi'] = array();
     
-                $Query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
+                $query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
                           FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
                                         INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
                           WHERE Korisnik.Username = ?";
-                $stmt = $Connection->prepare($Query);
+                $stmt = $connection->prepare($query);
                 $stmt->bind_param('s', $username);
                 $stmt->execute();
-                $Result = $stmt->get_result();
+                $result = $stmt->get_result();
     
-                while($Row = mysqli_fetch_assoc($Result))
+                while($row = mysqli_fetch_assoc($result))
                 {
-                    $NalogID = $Row['NalogID'];
-                    $ImeTipa = $Row['ImeTipa'];
-                    $Link 	 = $Row['Link'];
+                    $nalogID = $row['NalogID'];
+                    $imeTipa = $row['ImeTipa'];
+                    $link 	 = $row['Link'];
     
-                    array_push($_SESSION['Nalozi'], $NalogID);
+                    array_push($_SESSION['Nalozi'], $nalogID);
                     
-                    echo $ImeTipa;
-                    echo "<input type='text' name='$NalogID' value='$Link'>";
-                    echo "<input type='button' onclick='deleteLinkedProfile($NalogID)' value='Obriši'>";
+                    echo $imeTipa;
+                    echo "<input type='text' name='$nalogID' value='$link'>";
+                    echo "<input type='button' onclick='deleteLinkedProfile($nalogID)' value='Obriši'>";
                     echo "<br>";
                 }
     
@@ -64,21 +64,21 @@
     
                 echo "<form action='addNewProfile.php' method='post'>";
     
-                $Query = "SELECT TipNaloga.TipID, TipNaloga.ImeTipa 
+                $query = "SELECT TipNaloga.TipID, TipNaloga.ImeTipa 
                           FROM TipNaloga";
-                $stmt = $Connection->prepare($Query);
+                $stmt = $connection->prepare($query);
                 // $stmt->bind_param('s', $username);
                 $stmt->execute();
-                $Result = $stmt->get_result();
+                $result = $stmt->get_result();
     
                 echo "<select name='TipID'>";
     
-                while($Row = mysqli_fetch_assoc($Result))
+                while($row = mysqli_fetch_assoc($result))
                 {
-                    $TipID   = $Row['TipID'];
-                    $ImeTipa = $Row['ImeTipa'];
+                    $tipID   = $row['TipID'];
+                    $imeTipa = $row['ImeTipa'];
     
-                    echo "<option value='$TipID'>$ImeTipa</option>";
+                    echo "<option value='$tipID'>$imeTipa</option>";
                 }
     
                 echo "<input type='text' name='link' required='true'>";

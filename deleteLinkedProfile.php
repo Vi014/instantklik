@@ -6,12 +6,12 @@
 
     include_once('connection.php');
 
-    $NalogID = $_REQUEST['NalogID'];
+    $nalogID = $_REQUEST['NalogID'];
 
-    $Query = "DELETE FROM Nalog 
+    $query = "DELETE FROM Nalog 
               WHERE NalogID = ?";
-    $stmt = $Connection->prepare($Query);
-    $stmt->bind_param('i', $NalogID);
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param('i', $nalogID);
     $stmt->execute();
     $errorCode = mysqli_stmt_errno($stmt);
 

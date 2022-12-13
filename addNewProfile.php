@@ -6,29 +6,29 @@
 
     include_once('connection.php');
 
-    $TipID = $_POST['TipID'];
-    $Link = $_POST['link'];
-    $Username = $_SESSION['username'];
+    $tipID = $_POST['TipID'];
+    $link = $_POST['link'];
+    $username = $_SESSION['username'];
 
-    $Query = "SELECT Korisnik.KorisnikID 
+    $query = "SELECT Korisnik.KorisnikID 
               FROM Korisnik 
               WHERE Korisnik.Username = ?";
-    $stmt = $Connection->prepare($Query);
-    $stmt->bind_param('s', $Username);
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param('s', $username);
     $stmt->execute();
-    $Result = $stmt->get_result();
+    $result = $stmt->get_result();
 
-    while($Row = mysqli_fetch_assoc($Result))
+    while($row = mysqli_fetch_assoc($result))
     {
-        $KorisnikID = $Row['KorisnikID'];
+        $korisnikID = $row['KorisnikID'];
     }
 
 
 
-    $Query = "INSERT INTO Nalog(KorisnikID, TipID, Link) VALUES 
+    $query = "INSERT INTO Nalog(KorisnikID, TipID, Link) VALUES 
               (?, ?, ?)";
-    $stmt = $Connection->prepare($Query);
-    $stmt->bind_param('iis', $KorisnikID, $TipID, $Link);
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param('iis', $korisnikID, $tipID, $link);
     $stmt->execute();
     $errorCode = mysqli_stmt_errno($stmt);
 

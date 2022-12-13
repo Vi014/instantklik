@@ -12,9 +12,9 @@
         
         $username = $_SESSION['username'];
 
-        $Query = "DELETE FROM Korisnik 
+        $query = "DELETE FROM Korisnik 
                   WHERE Korisnik.Username = ?";
-        $stmt = $Connection->prepare($Query);
+        $stmt = $connection->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $errorCode = mysqli_stmt_errno($stmt);

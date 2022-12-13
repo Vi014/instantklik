@@ -4,32 +4,32 @@
         session_start();
     }
 
-    $ServerName   = "localhost";
-    $UIDServer    = "root";
-    $PWDServer    = "";
-    $DatabaseName = "instantklik";
+    $serverName   = "localhost";
+    $uidServer    = "root";
+    $pwdServer    = "";
+    $databaseName = "instantklik";
    
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    $Connection = new mysqli($ServerName, $UIDServer, $PWDServer, $DatabaseName);
-    $Connection->set_charset('utf8mb4');
+    $connection = new mysqli($serverName, $uidServer, $pwdServer, $databaseName);
+    $connection->set_charset('utf8mb4');
    
-    if($Connection)
+    if($connection)
     {
         if(!isset($_SESSION['password']) && isset($_COOKIE['password']))
         {
             $cookieUsername = $_COOKIE['username'];
             $cookiePassword = $_COOKIE['password'];
 
-            $Query = "SELECT * 
+            $query = "SELECT * 
                       FROM Korisnik 
                       WHERE Korisnik.Username = ? AND Korisnik.Password = ?";
-            $stmt = $Connection->prepare($Query);
+            $stmt = $connection->prepare($query);
             $stmt->bind_param('ss', $cookieUsername, $cookiePassword);
             $stmt->execute();
-            $Result = $stmt->get_result();
-            $RowCount = mysqli_num_rows($Result);
+            $result = $stmt->get_result();
+            $rowCount = $result->num_rows;
 
-            if($RowCount > 0)
+            if($rowCount > 0)
             {
                 $_SESSION['username'] = $_COOKIE['username'];
                 $_SESSION['password'] = $_COOKIE['password'];

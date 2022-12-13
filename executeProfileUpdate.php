@@ -6,18 +6,18 @@
 
     include_once('connection.php');
 
-    $Nalozi = $_SESSION['Nalozi'];
+    $nalozi = $_SESSION['Nalozi'];
 
-    for ($i=0; $i < count($Nalozi); $i++) 
+    for ($i=0; $i < count($nalozi); $i++) 
     { 
-        $trenutanID = $Nalozi[$i];
-        $Link = $_POST[$trenutanID];
+        $trenutanID = $nalozi[$i];
+        $link = $_POST[$trenutanID];
 
-        $Query = "UPDATE Nalog 
+        $query = "UPDATE Nalog 
                   SET Link = ? 
                   WHERE NalogID = ?";
-        $stmt = $Connection->prepare($Query);
-        $stmt->bind_param('si', $Link, $trenutanID);
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param('si', $link, $trenutanID);
         $stmt->execute();
         $errorCode = mysqli_stmt_errno($stmt);
 

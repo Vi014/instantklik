@@ -41,9 +41,9 @@
 				echo "<a href='register.php'>Registracija</a>";
 			}
 
-			if(isset($_GET['profile']))
+			if(isset($_SERVER['PATH_INFO']))
 			{
-				$_SESSION['profile'] = $_GET['profile'];
+				$_SESSION['profile'] = ltrim($_SERVER['PATH_INFO'], '/');
 				include_once('query.php');
 			}
 		?>
