@@ -1,8 +1,10 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+    if(!isset($cfg))
+	{
+		$cfg = include_once "cfg/config.php";
+	}
+
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +17,25 @@
 
         <title>Instantklik</title>
 
-        <link rel="icon" href="images/IK-smalltransparent.png"/>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <?php 
+            echo "<link rel='icon' href='$cfg->ROOT_URL/images/IK-smalltransparent.png'/>";
+		    echo "<link rel='stylesheet' type='text/css' href='$cfg->ROOT_URL/css/style.css'/>";
 
+            $jQueryUrl = $cfg->ROOT_URL."/js/jquery.min.js";
+            $jQueryUrl = str_replace("/", "\/", $jQueryUrl);
+        ?>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script>!window.jQuery && document.write('<script src="js\/jquery.min.js"><\/script>')</script>
+        <script>!window.jQuery && document.write('<script src="<?php echo $jQueryUrl; ?>"><\/script>')</script>
     </head>
 
     <body>
-        <form action="createAccount.php" method="post">
-            <input type="text"     name="username" required="true" placeholder="Korisničko ime">
-            <input type="password" name="password" required="true" placeholder="Lozinka">
-            <input type="submit" value="Kreiraj nalog">
-		</form>
+        <?php
+            echo "<form action='$cfg->ROOT_URL/func/queries/createAccount.php' method='post'>";
+            echo "  <input type='text'     name='username' required='true' placeholder='Korisničko ime'>";
+            echo "  <input type='password' name='password' required='true' placeholder='Lozinka'>";
+            echo "  <input type='submit' value='Kreiraj nalog'>";
+		    echo "</form>";
+        ?>
     </body>
 </html>

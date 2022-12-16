@@ -1,10 +1,10 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+    if(!isset($cfg))
+	{
+		$cfg = include_once "../../cfg/config.php";
+	}
 
-    include_once('connection.php');
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -38,7 +38,7 @@
                 setcookie("password", $pwdHash,  time()+60*60*24*30*6);
             }
 
-            header("location: editProfile.php");
+            header("location: $cfg->ROOT_URL/editProfile.php");
         }
         else
         {

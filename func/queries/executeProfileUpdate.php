@@ -1,10 +1,10 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+    if(!isset($cfg))
+	{
+		$cfg = include_once "../../cfg/config.php";
+	}
 
-    include_once('connection.php');
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 
     $nalozi = $_SESSION['Nalozi'];
 
@@ -24,7 +24,7 @@
         if (!$errorCode)
         {
             echo "Profil uspešno ažuriran! Uskoro ćete biti vraćeni na stranicu za izmenu povezanih naloga... <br>";
-            header("location: editProfile.php");
+            header("location: $cfg->ROOT_URL/editProfile.php");
         }
         else
         {

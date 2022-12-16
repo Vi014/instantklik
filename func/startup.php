@@ -1,16 +1,18 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
+    if(!isset($cfg))
+    {
+        $cfg = include_once "../cfg/config.php";
+    }
+
+    // starting the session
+	if (session_status() === PHP_SESSION_NONE) 
     {
         session_start();
     }
 
-    $serverName   = "localhost";
-    $uidServer    = "root";
-    $pwdServer    = "";
-    $databaseName = "instantklik";
-   
+    // connecting to the database
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    $connection = new mysqli($serverName, $uidServer, $pwdServer, $databaseName);
+    $connection = new mysqli($cfg->serverName, $cfg->uidServer, $cfg->pwdServer, $cfg->databaseName);
     $connection->set_charset('utf8mb4');
    
     if($connection)

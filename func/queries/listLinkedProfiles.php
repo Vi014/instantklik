@@ -1,5 +1,10 @@
 <?php
-	include_once('connection.php');
+    if(!isset($cfg))
+	{
+		$cfg = include_once "../../cfg/config.php";
+	}
+
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 
 	$profile = $_SESSION['profile'];
 
@@ -28,10 +33,11 @@
 		while($row = mysqli_fetch_assoc($result))
 		{
 			$imeTipa = $row['ImeTipa'];
-			$slika   = $row['Slika'];
 			$link 	 = $row['Link'];
+
+			$slika = $cfg->ROOT_URL."/images/sites/".$imeTipa.".png";
 			
-			echo "<a href='$link'><img style='height: 50px; width: 50px;' src='../$slika'></a> <br>";
+			echo "<a href='$link'><img style='height: 50px; width: 50px;' src='$slika'></a> <br>";
 		}
 	}
 	else

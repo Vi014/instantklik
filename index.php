@@ -1,8 +1,10 @@
 <?php
-	if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+	if(!isset($cfg))
+	{
+		$cfg = include_once "cfg/config.php";
+	}
+
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,36 +17,37 @@
 
 		<title>Instantklik</title>
 
-		<link rel="icon" href="images/IK-smalltransparent.png"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<?php 
+            echo "<link rel='icon' href='$cfg->ROOT_URL/images/IK-smalltransparent.png'/>";
+		    echo "<link rel='stylesheet' type='text/css' href='$cfg->ROOT_URL/css/style.css'/>";
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script>!window.jQuery && document.write('<script src="js\/jquery.min.js"><\/script>')</script>
+            $jQueryUrl = $cfg->ROOT_URL."/js/jquery.min.js";
+            $jQueryUrl = str_replace("/", "\/", $jQueryUrl);
+        ?>
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>!window.jQuery && document.write('<script src="<?php echo $jQueryUrl; ?>"><\/script>')</script>
 	</head>
 
 	<body>
-		<div id="links"></div>
-
-		<script src="js/script.js"></script>
-
 		<?php
-			include_once('connection.php');
+			echo "<script src='$cfg->ROOT_URL/js/script.js'></script>";
 
 			if(isset($_SESSION['username']))
 			{
-				echo "<a href='editProfile.php'>Moj profil</a>";
+				echo "<a href='$cfg->ROOT_URL/editProfile.php'>Moj profil</a>";
 			}
 			else
 			{
-				echo "<a href='login.php'>Login</a>";
+				echo "<a href='$cfg->ROOT_URL/login.php'>Login</a>";
 				echo "<br>";
-				echo "<a href='register.php'>Registracija</a>";
+				echo "<a href='$cfg->ROOT_URL/register.php'>Registracija</a>";
 			}
 
 			if(isset($_SERVER['PATH_INFO']))
 			{
 				$_SESSION['profile'] = ltrim($_SERVER['PATH_INFO'], '/');
-				include_once('query.php');
+				include_once $cfg->ROOT_PATH."/func/queries/listLinkedProfiles.php";
 			}
 		?>
 	</body>

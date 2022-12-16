@@ -1,10 +1,10 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+    if(!isset($cfg))
+	{
+		$cfg = include_once "../../cfg/config.php";
+	}
 
-    include_once('connection.php');
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 
     $username = $_POST['username'];
     $pwdHash  = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -36,7 +36,7 @@
 
 			echo "Kreiranje naloga uspešno obavljeno!";
 
-			header("location: editProfile.php");
+			header("location: $cfg->ROOT_URL/editProfile.php");
 		}
 		else
 		{

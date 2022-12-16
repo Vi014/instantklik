@@ -1,10 +1,10 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) 
-    {
-        session_start();
-    }
+    if(!isset($cfg))
+	{
+		$cfg = include_once "../../cfg/config.php";
+	}
 
-    include_once('connection.php');
+	include_once $cfg->ROOT_PATH."/func/startup.php";
 
     if(password_verify($_POST['password'], $_SESSION['password']))
 	{
@@ -29,7 +29,7 @@
             setcookie('username', 'asdf', 1);
             setcookie('password', 'asdf', 1);
 
-            header("location: index.php");
+            header("location: $cfg->ROOT_URL/index.php");
         }
         else
         {
@@ -38,6 +38,6 @@
 	}
 	else
 	{
-		echo "Pogrešno uneta šifra! Vratite se na <a href='deleteAccount.php'>prethodnu stranicu</a>.";
+		echo "Pogrešno uneta šifra! Vratite se na <a href='$cfg->ROOT_URL/deleteAccount.php'>prethodnu stranicu</a>.";
 	}
 ?>
