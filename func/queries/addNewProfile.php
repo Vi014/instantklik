@@ -35,7 +35,7 @@
     if (!$errorCode)
     {
         echo "Profil uspešno ažuriran! Uskoro ćete biti vraćeni na stranicu za izmenu povezanih naloga... <br>";
-        header("location: $cfg->ROOT_URL/editProfile.php");
+        header("Location: $cfg->ROOT_URL/editProfile.php");
     }
     else
     {

@@ -31,12 +31,12 @@
 		{
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $pwdHash;
-			setcookie("username", $username, time()+60*60*24*30*6);
-            setcookie("password", $pwdHash,  time()+60*60*24*30*6);
+			setcookie("username", $username, time()+60*60*24*30*6, "/");
+            setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
 
 			echo "Kreiranje naloga uspešno obavljeno!";
 
-			header("location: $cfg->ROOT_URL/editProfile.php");
+			header("Location: $cfg->ROOT_URL/editProfile.php");
 		}
 		else
 		{

@@ -34,11 +34,11 @@
             
             if(isset($_POST['rememberMe']))
             {
-                setcookie("username", $username, time()+60*60*24*30*6);
-                setcookie("password", $pwdHash,  time()+60*60*24*30*6);
+                setcookie("username", $username, time()+60*60*24*30*6, "/");
+                setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
             }
 
-            header("location: $cfg->ROOT_URL/editProfile.php");
+            header("Location: $cfg->ROOT_URL/editProfile.php");
         }
         else
         {

@@ -26,10 +26,10 @@
             unset($_SESSION['username']);
             unset($_SESSION['password']);
 
-            setcookie('username', 'asdf', 1);
-            setcookie('password', 'asdf', 1);
+            setcookie('username', 'asdf', 1, "/");
+            setcookie('password', 'asdf', 1, "/");
 
-            header("location: $cfg->ROOT_URL/index.php");
+            header("Location: $cfg->ROOT_URL/index.php");
         }
         else
         {

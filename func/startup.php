@@ -10,6 +10,30 @@
         session_start();
     }
 
+    // language
+    $_SESSION['lang'] = array();
+
+    $langList = scandir($cfg->ROOT_PATH."/func/lang"); 
+
+    for ($i = 2; $i < count($langList); $i++) 
+    {
+        include_once $cfg->ROOT_PATH."/func/lang/".$langList[$i];
+    }
+    
+    if(!isset($_SESSION['selectedLang']))
+    {
+        if(isset($_COOKIE['selectedLang']))
+        {
+            $_SESSION['selectedLang'] = $_COOKIE['selectedLang'];
+        }
+        else
+        {
+            $_SESSION['selectedLang'] = "English";
+        }
+    }
+
+    $lang = $_SESSION['lang'][$_SESSION['selectedLang']];
+
     // connecting to the database
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     $connection = new mysqli($cfg->serverName, $cfg->uidServer, $cfg->pwdServer, $cfg->databaseName);
@@ -38,8 +62,8 @@
             }
             else 
             {
-                setcookie('username', 'asdf', 1);
-                setcookie('password', 'asdf', 1);
+                setcookie('username', 'asdf', 1, "/");
+                setcookie('password', 'asdf', 1, "/");
             }
         }
     }
