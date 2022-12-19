@@ -17,11 +17,11 @@
 
     if (!$errorCode)
     {
-        echo "Povezan profil uspešno obrisan! Uskoro ćete biti vraćeni na stranicu za izmenu povezanih naloga... <br>";
+        echo $lang[28]." <br>";
         header("Location: $cfg->ROOT_URL/editProfile.php");
     }
     else
     {
-        echo "Došlo je do greške: kod $errorCode <br>";
+        echo $lang[29]." $errorCode <br>";
     }
 ?>

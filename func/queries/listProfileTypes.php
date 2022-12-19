@@ -26,6 +26,6 @@
     }
 
     echo "<input type='text' name='link' required='true'>";
-    echo "<input type='submit' value='Dodaj novi link'>";
+    echo "<input type='submit' value='".$lang[40]."'>";
     echo "</form>";
 ?>

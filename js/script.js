@@ -1,4 +1,4 @@
-function changeLanguage(langName, ROOT_PATH, ROOT_URL)
+function changeLanguage(langName, ROOT_PATH, ROOT_URL, errorMessage)
 {
     $.ajax
     (
@@ -12,13 +12,13 @@ function changeLanguage(langName, ROOT_PATH, ROOT_URL)
             },
             error: function() 
             {
-                alert("Došlo je do greške.");
+                alert(errorMessage);
             }
         }
     );
 }
 
-function deleteLinkedProfile(NalogID, ROOT_PATH, ROOT_URL)
+function deleteLinkedProfile(NalogID, ROOT_PATH, ROOT_URL, errorMessage)
 {
     $.ajax
     (
@@ -32,7 +32,7 @@ function deleteLinkedProfile(NalogID, ROOT_PATH, ROOT_URL)
             },
             error: function() 
             {
-                alert("Došlo je do greške.");
+                alert(errorMessage);
             }
         }
     );

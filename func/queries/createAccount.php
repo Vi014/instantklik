@@ -34,17 +34,17 @@
 			setcookie("username", $username, time()+60*60*24*30*6, "/");
             setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
 
-			echo "Kreiranje naloga uspešno obavljeno!";
+			echo $lang[25];
 
 			header("Location: $cfg->ROOT_URL/editProfile.php");
 		}
 		else
 		{
-			echo "Došlo je do greške pri kreiranju naloga: kod $errorCode";
+			echo $lang[26]." $errorCode";
 		}
 	}
 	else
 	{
-		echo "Korisnik sa unetim imenom već postoji!";
+		echo $lang[27];
 	}
 ?>

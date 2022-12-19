@@ -10,7 +10,7 @@
     {
         $langName = substr($langList[$i], 0, -4);
 
-        echo "<div onclick=\"changeLanguage('$langName', '$cfg->ROOT_PATH', '$cfg->ROOT_URL')\">";
+        echo "<div onclick=\"changeLanguage('$langName', '$cfg->ROOT_PATH', '$cfg->ROOT_URL', '".$_SESSION['lang'][$langName][17]."')\">";
         echo "  <img style='height: 1em; width: auto;' src='$cfg->ROOT_URL/images/flags/$langName.png'>";
         echo $langName;
         echo "</div>";

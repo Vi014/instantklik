@@ -30,10 +30,10 @@
         
         echo $imeTipa;
         echo "<input type='text' name='$nalogID' value='$link'>";
-        echo "<input type='button' onclick=\"deleteLinkedProfile($nalogID, '$cfg->ROOT_PATH', '$cfg->ROOT_URL')\" value='Obriši'>";
+        echo "<input type='button' onclick=\"deleteLinkedProfile($nalogID, '$cfg->ROOT_PATH', '$cfg->ROOT_URL', '".$lang[18]."')\" value='".$lang[38]."'>";
         echo "<br>";
     }
 
-    echo "<input type='submit' value='Unos podataka'>";
+    echo "<input type='submit' value='".$lang[39]."'>";
     echo "</form>";
 ?>

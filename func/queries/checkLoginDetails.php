@@ -27,7 +27,7 @@
 
         if(password_verify($password, $pwdHash))
         {
-            echo "Prijava uspešna!";
+            echo $lang[22];
 
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $pwdHash;
@@ -42,11 +42,11 @@
         }
         else
         {
-            echo "Pogrešna šifra!";
+            echo $lang[23];
         }
 	}
 	else
 	{
-		echo "Greška, ne postoji korisnik sa unetim imenom.";
+		echo $lang[24];
 	}
 ?>

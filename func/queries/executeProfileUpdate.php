@@ -23,12 +23,12 @@
 
         if (!$errorCode)
         {
-            echo "Profil uspešno ažuriran! Uskoro ćete biti vraćeni na stranicu za izmenu povezanih naloga... <br>";
+            echo $lang[34]." <br>";
             header("Location: $cfg->ROOT_URL/editProfile.php");
         }
         else
         {
-            echo "Došlo je do greške: kod $errorCode <br>";
+            echo $lang[35]." $errorCode <br>";
         }
     }
 ?>

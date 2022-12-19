@@ -42,6 +42,6 @@
 	}
 	else
 	{
-		echo "Korisnik sa traženim imenom ne posotoji.";
+		echo $lang[36];
 	}
 ?>

@@ -69,7 +69,7 @@
     }
     else
     {
-        echo "Doslo je do greske pri povezivanju sa bazom! <br>";
+        echo $lang[19]." <br>";
         exit();
     }
 ?>

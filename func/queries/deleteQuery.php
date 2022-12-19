@@ -8,7 +8,7 @@
 
     if(password_verify($_POST['password'], $_SESSION['password']))
 	{
-        echo "Uneta šifra je ispravna. Sledi brisanje naloga... <br>";
+        echo $lang[30]." <br>";
         
         $username = $_SESSION['username'];
 
@@ -21,7 +21,7 @@
 
         if (!$errorCode)
         {
-            echo "Instantklik nalog uspešno obrisan. Uskoro ćete biti prebačeni na naslovnu stranu... <br>";
+            echo $lang[31]." <br>";
 
             unset($_SESSION['username']);
             unset($_SESSION['password']);
@@ -33,11 +33,11 @@
         }
         else
         {
-            echo "Došlo je do greške: kod $errorCode <br>";
+            echo $lang[32]." $errorCode <br>";
         }
 	}
 	else
 	{
-		echo "Pogrešno uneta šifra! Vratite se na <a href='$cfg->ROOT_URL/deleteAccount.php'>prethodnu stranicu</a>.";
+		echo $lang[33]." <a href='$cfg->ROOT_URL/deleteAccount.php'>".$lang[33]."</a>.";
 	}
 ?>

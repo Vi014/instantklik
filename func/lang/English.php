@@ -4,6 +4,43 @@
         "Instantklik",
         "My Account",
         "Login",
-        "Register"
+        "Register",
+        "To confirm account deletion, please enter your password again:", // deleteAccount.php
+        "Log out", // editProfile.php
+        "Delete account",
+        "You are not logged in! Please return to the",
+        "index page",
+        "in order to log in.",
+        "Username", // login.php
+        "Password",
+        "Remember me",
+        "Log in",
+        "Username", // register.php
+        "Password",
+        "Create account",
+        "An error has occurred while changing the language.", // js/script.js
+        "An error has occurred while deleting the linked account.",
+        "An error has occurred while connecting to the database.", // func/startup.php
+        "Profile successfully updated! You will be returned to the profile editing page soon...", // func/queries/addNewProfile.php
+        "An error has occurred: code",
+        "Login successful!", // func/queries/checkLoginDetails.php
+        "Wrong password!",
+        "Error: there is no user with the entered username",
+        "Account creation successful!", // func/queries/createAccount.php
+        "An error has occurred during account creation: code",
+        "A profile with the entered username already exists!",
+        "Linked account successfully removed! You will be returned to the profile editing page soon...", // func/queries/deleteLinkedProfile.php
+        "An error has occurred: code",
+        "Password entry successful. Your profile is about to be deleted...", // func/queries/deleteQuery.php
+        "Instantklik account successfully deleted. You will be redirected to the index page soon...",
+        "An error has occurred: code",
+        "Wrong password! Return to the",
+        "previous page",
+        "Profile successfully updated! You will be returned to the profile editing page soon...", // func/queries/executeProfileUpdate.php
+        "An error has occurred: code",
+        "The profile you're looking for doesn't exist.", // func/queries/listLinkedProfiles.php
+        "Remove", // func/queries/listOwnLinkedProfiles.php 
+        "Update data",
+        "Add new link" // func/queries/listProfileTypes.php
     );
 ?>
