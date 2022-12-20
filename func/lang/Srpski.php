@@ -41,6 +41,19 @@
         "Korisnik sa traženim imenom ne posotoji.", // func/queries/listLinkedProfiles.php
         "Obriši", // func/queries/listOwnLinkedProfiles.php 
         "Unos podataka",
-        "Dodaj novi link" // func/queries/listProfileTypes.php
+        "Dodaj novi link", // func/queries/listProfileTypes.php
+        "Potvrdite šifru", // register.php
+        "Šifra koju ste uneli se ne poklapa sa šifrom u polju za potvrdu!", // func/queries/createAccount.php
+        "Trenutna šifra", // editProfile.php
+        "Novo korisničko ime",
+        "Nova šifra",
+        "Ažuriraj profil",
+        "Pogrešna šifra!", // func/queries/updateAccount.php
+        "Korisnik sa unetim imenom već postoji!",
+        "Korisničko ime uspešno ažurirano!",
+        "Došlo je do greške pri ažuriranju korisničkog imena: kod",
+        "Ažuriranje profila uspešno! Uskoro ćete biti vraćeni na stranicu za izmenu podataka...",
+        "Šifra uspešno ažurirana!",
+        "Došlo je do greške pri ažuriranju šifre: kod"
     );
 ?>

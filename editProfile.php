@@ -45,6 +45,13 @@
                 include_once $cfg->ROOT_PATH."/func/queries/listOwnLinkedProfiles.php";
                 include_once $cfg->ROOT_PATH."/func/queries/listProfileTypes.php";
 
+                echo "<form action='$cfg->ROOT_URL/func/queries/updateAccount.php' method='post'>";
+                echo "  <input type='password' name='confirmPass' required='true' placeholder='".$lang[43]."'>";
+                echo "  <input type='text'     name='newUsername' placeholder='".$lang[44]."'>";
+                echo "  <input type='password' name='newPassword' placeholder='".$lang[45]."'>";
+                echo "  <input type='submit'   value='".$lang[46]."'>";
+                echo "</form>";
+
                 echo "<a href='$cfg->ROOT_URL/func/logout.php'>".$lang[5]."</a>";
                 echo "<br>";
                 echo "<a href='$cfg->ROOT_URL/deleteAccount.php'>".$lang[6]."</a>";

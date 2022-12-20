@@ -41,6 +41,19 @@
         "The profile you're looking for doesn't exist.", // func/queries/listLinkedProfiles.php
         "Remove", // func/queries/listOwnLinkedProfiles.php 
         "Update data",
-        "Add new link" // func/queries/listProfileTypes.php
+        "Add new link", // func/queries/listProfileTypes.php
+        "Confirm password", // register.php
+        "The password you entered does not match the one in the confirm password field!", // func/queries/createAccount.php
+        "Current password", // editProfile.php
+        "New username",
+        "New password",
+        "Update account",
+        "Wrong password!", // func/queries/updateAccount.php
+        "A profile with the entered username already exists!",
+        "Username successfully updated!",
+        "An error has occurred while changing your username: code",
+        "Profile successfully updated! You will be returned to the profile editing page soon...",
+        "Password successfully updated!",
+        "An error has ocurred while chaning your password: code"
     );
 ?>

@@ -21,7 +21,7 @@
         "Un error ha ocurrido durante el cambio del idioma.", // js/script.js
         "Un error ha ocurrido durante la eliminación de la cuenta conectada.",
         "Un error ha ocurrido durante la conexión a la basa de datos.", // func/startup.php
-        "¿Perfil actualizado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/addNewProfile.php
+        "¡Perfil actualizado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/addNewProfile.php
         "Un error ha ocurrido: código",
         "¡Sesión iniciada con éxito!", // func/queries/checkLoginDetails.php
         "¡Contraseña incorrecta!",
@@ -41,6 +41,19 @@
         "No hay una cuenta con ese nombre de usario.", // func/queries/listLinkedProfiles.php
         "Eliminar", // func/queries/listOwnLinkedProfiles.php 
         "Actualizar los datos",
-        "Añadir nuevo enlace" // func/queries/listProfileTypes.php
+        "Añadir nuevo enlace", // func/queries/listProfileTypes.php
+        "Confirmar contraseña", // register.php
+        "¡La contraseña que ingresó no es la misma que la del campo de entrada de confirmación!", // func/queries/createAccount.php
+        "Contraseña actual", // editProfile.php
+        "Nuevo nombre de usario",
+        "Nueva contraseña",
+        "Actualizar cuenta",
+        "¡Contraseña incorrecta!", // func/queries/updateAccount.php
+        "¡Ya hay una cuenta con ese nombre de usario!",
+        "¡Nombre de usario actualizado con éxito!",
+        "Un error ha ocurrido durante el cambio de su nombre de usario: código",
+        "¡Perfil actualizado con éxito! Regresará a la página de editar el perfil pronto...",
+        "¡Contraseña actualizada con éxito!",
+        "Un error ha ocurrido durante el cambio de su contraseña: código"
     );
 ?>
