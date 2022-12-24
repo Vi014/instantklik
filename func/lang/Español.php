@@ -54,6 +54,8 @@
         "Un error ha ocurrido durante el cambio de su nombre de usario: código",
         "¡Perfil actualizado con éxito! Regresará a la página de editar el perfil pronto...",
         "¡Contraseña actualizada con éxito!",
-        "Un error ha ocurrido durante el cambio de su contraseña: código"
+        "Un error ha ocurrido durante el cambio de su contraseña: código",
+        "¡Su nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos.", // createAccount.php
+        "¡Su nuevo nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos." // updateAccount.php
     );
 ?>

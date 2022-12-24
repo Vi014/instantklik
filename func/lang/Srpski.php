@@ -54,6 +54,8 @@
         "Došlo je do greške pri ažuriranju korisničkog imena: kod",
         "Ažuriranje profila uspešno! Uskoro ćete biti vraćeni na stranicu za izmenu podataka...",
         "Šifra uspešno ažurirana!",
-        "Došlo je do greške pri ažuriranju šifre: kod"
+        "Došlo je do greške pri ažuriranju šifre: kod",
+        "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu.", // createAccount.php
+        "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu." // updateAccount.php
     );
 ?>

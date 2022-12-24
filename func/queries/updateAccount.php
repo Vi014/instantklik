@@ -31,44 +31,52 @@
         {
             $newUsername = $_POST['newUsername']; 
 
-            $query = "SELECT * 
+            if(ctype_alnum(str_replace($aValid, '', $newUsername)))
+            {
+                $query = "SELECT * 
                       FROM Korisnik 
                       WHERE Korisnik.Username = ?";
-            $stmt = $connection->prepare($query);
-            $stmt->bind_param('s', $newUsername);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $rowCount = $result->num_rows;
-	
-            if($rowCount == 0)
-            {
-                $query = "UPDATE Korisnik 
-                          SET Username = ? 
-                          WHERE Username = ?";
                 $stmt = $connection->prepare($query);
-                $stmt->bind_param('ss', $newUsername, $username);
+                $stmt->bind_param('s', $newUsername);
                 $stmt->execute();
-                $errorCode = mysqli_stmt_errno($stmt);
-                
-                if(!$errorCode)
+                $result = $stmt->get_result();
+                $rowCount = $result->num_rows;
+        
+                if($rowCount == 0)
                 {
-                    $lang[49];
-
-                    $_SESSION['username'] = $newUsername;
-                    if(isset($_COOKIE['username']))
+                    $query = "UPDATE Korisnik 
+                            SET Username = ? 
+                            WHERE Username = ?";
+                    $stmt = $connection->prepare($query);
+                    $stmt->bind_param('ss', $newUsername, $username);
+                    $stmt->execute();
+                    $errorCode = mysqli_stmt_errno($stmt);
+                    
+                    if(!$errorCode)
                     {
-                        setcookie("username", $newUsername, time()+60*60*24*30*6, "/");
+                        $lang[49];
+
+                        $_SESSION['username'] = $newUsername;
+                        if(isset($_COOKIE['username']))
+                        {
+                            setcookie("username", $newUsername, time()+60*60*24*30*6, "/");
+                        }
+                    }
+                    else
+                    {
+                        echo $lang[50]." $errorCode";
+                        $updatesSuccessful = false;
                     }
                 }
                 else
                 {
-                    echo $lang[50]." $errorCode";
+                    echo $lang[48];
                     $updatesSuccessful = false;
                 }
             }
             else
             {
-                echo $lang[48];
+                echo $lang[55];
                 $updatesSuccessful = false;
             }
         }

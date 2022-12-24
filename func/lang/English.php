@@ -54,6 +54,8 @@
         "An error has occurred while changing your username: code",
         "Profile successfully updated! You will be returned to the profile editing page soon...",
         "Password successfully updated!",
-        "An error has ocurred while chaning your password: code"
+        "An error has ocurred while chaning your password: code",
+        "Your username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores.", // createAccount.php
+        "Your new username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores." // updateAccount.php
     );
 ?>
