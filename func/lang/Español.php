@@ -56,6 +56,9 @@
         "¡Contraseña actualizada con éxito!",
         "Un error ha ocurrido durante el cambio de su contraseña: código",
         "¡Su nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos.", // createAccount.php
-        "¡Su nuevo nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos." // updateAccount.php
+        "¡Su nuevo nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos.", // updateAccount.php
+        "¡Longitud prohibida! Su nombre de usario tiene que tener entre 3 y 15 carácteres.", // createAccount.php
+        "¡Longitud prohibida! Su nombre de usario tiene que tener entre 3 y 15 carácteres.", // updateAccount.php
+        "¡Su nueva contraseña tiene que ser distinta de la anteriora!"
     );
 ?>

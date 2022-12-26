@@ -56,6 +56,9 @@
         "Šifra uspešno ažurirana!",
         "Došlo je do greške pri ažuriranju šifre: kod",
         "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu.", // createAccount.php
-        "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu." // updateAccount.php
+        "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu.", // updateAccount.php
+        "Nedozvoljena dužina korisničkog imena! Korisničko ime mora imati između 3 i 15 karaktera.", // createAccount.php
+        "Nedozvoljena dužina korisničkog imena! Korisničko ime mora imati između 3 i 15 karaktera.", // updateAccount.php
+        "Nova šifra ne može biti ista kao i prethodna!"
     );
 ?>

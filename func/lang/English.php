@@ -56,6 +56,9 @@
         "Password successfully updated!",
         "An error has ocurred while chaning your password: code",
         "Your username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores.", // createAccount.php
-        "Your new username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores." // updateAccount.php
+        "Your new username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores.", // updateAccount.php
+        "Invalid length! Your username must be between 3 and 15 characters long.", // createAccount.php
+        "Invalid length! Your username must be between 3 and 15 characters long.", // updateAccount.php
+        "Your new password can't be the same as your old one!"
     );
 ?>
