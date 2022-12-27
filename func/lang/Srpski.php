@@ -59,6 +59,22 @@
         "Uneto korisničko ime sadrže nedozvoljene karaktere! Smete koristiti samo latinična slova, brojeve, crtu i donju crtu.", // updateAccount.php
         "Nedozvoljena dužina korisničkog imena! Korisničko ime mora imati između 3 i 15 karaktera.", // createAccount.php
         "Nedozvoljena dužina korisničkog imena! Korisničko ime mora imati između 3 i 15 karaktera.", // updateAccount.php
-        "Nova šifra ne može biti ista kao i prethodna!"
+        "Nova šifra ne može biti ista kao i prethodna!",
+        "Šifra ne ispunjava sve uslove!", // createAccount.php
+        "Šifra mora biti bar 8 karaktera duga.",
+        "Šifra mora imati bar jednu cifru u sebi.",
+        "Šifra mora imati bar jedno veliko slovo u sebi.",
+        "Šifra mora imati bar jedno malo slovo u sebi.",
+        "Šifra mora imati bar jedan znak u sebi.",
+        "✅",
+        "❌",
+        "Nova šifra ne ispunjava sve uslove!", // updateAccount.php
+        "Šifra mora biti bar 8 karaktera duga.",
+        "Šifra mora imati bar jednu cifru u sebi.",
+        "Šifra mora imati bar jedno veliko slovo u sebi.",
+        "Šifra mora imati bar jedno malo slovo u sebi.",
+        "Šifra mora imati bar jedan znak u sebi.",
+        "✅",
+        "❌"
     );
 ?>

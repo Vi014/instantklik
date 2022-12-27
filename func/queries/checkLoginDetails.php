@@ -22,7 +22,7 @@
 	{
         while($row = mysqli_fetch_assoc($result))
         {
-            $pwdHash = $row['Password']; // sifra za sve placeholder naloge je "password"
+            $pwdHash = $row['Password']; // the password for all placeholder accounts is either "password" or "P@ssword1"
         }
 
         if(password_verify($password, $pwdHash))

@@ -59,6 +59,22 @@
         "Your new username contains forbidden characters! You may only use Latin letters, numbers, dashes, and underscores.", // updateAccount.php
         "Invalid length! Your username must be between 3 and 15 characters long.", // createAccount.php
         "Invalid length! Your username must be between 3 and 15 characters long.", // updateAccount.php
-        "Your new password can't be the same as your old one!"
+        "Your new password can't be the same as your old one!",
+        "Your password does not fulfill all the requirements!", // createAccount.php
+        "It must be at least 8 characters long.",
+        "It must have at least one number in it.",
+        "It must have at least one uppercase letter in it.",
+        "It must have at least one lowercase letter in it.",
+        "It must have at least one special character in it.",
+        "✅",
+        "❌",
+        "Your new password does not fulfill all the requirements!", // updateAccount.php
+        "It must be at least 8 characters long.",
+        "It must have at least one number in it.",
+        "It must have at least one uppercase letter in it.",
+        "It must have at least one lowercase letter in it.",
+        "It must have at least one special character in it.",
+        "✅",
+        "❌"
     );
 ?>

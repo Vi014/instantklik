@@ -59,6 +59,22 @@
         "¡Su nuevo nombre de usario tiene carácteres prohibidos! Solo se pueden usar letras del alfabeto latino, números, guiones y guiones bajos.", // updateAccount.php
         "¡Longitud prohibida! Su nombre de usario tiene que tener entre 3 y 15 carácteres.", // createAccount.php
         "¡Longitud prohibida! Su nombre de usario tiene que tener entre 3 y 15 carácteres.", // updateAccount.php
-        "¡Su nueva contraseña tiene que ser distinta de la anteriora!"
+        "¡Su nueva contraseña tiene que ser distinta de la anteriora!",
+        "¡Su contraseña no cumple todas las condiciones!", // createAccount.php
+        "La tiene que tener 8 o más carácteres.",
+        "La tiene que tener al menos un dígito.",
+        "La tiene que tener al menos una letra mayúscula.",
+        "La tiene que tener al menos una letra minúscula.",
+        "La tiene que tener al menos un signo de interpunción.",
+        "✅",
+        "❌",
+        "¡Su nueva contraseña no cumple todas las condiciones!", // updateAccount.php
+        "La tiene que tener 8 o más carácteres.",
+        "La tiene que tener al menos un dígito.",
+        "La tiene que tener al menos una letra mayúscula.",
+        "La tiene que tener al menos una letra minúscula.",
+        "La tiene que tener al menos un signo de interpunción.",
+        "✅",
+        "❌"
     );
 ?>
