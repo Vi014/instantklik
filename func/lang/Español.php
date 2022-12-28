@@ -75,6 +75,8 @@
         "La tiene que tener al menos una letra minúscula.",
         "La tiene que tener al menos un signo de interpunción.",
         "✅",
-        "❌"
+        "❌",
+        "Confirmar nueva contraseña", // editProfile.php
+        "¡La nueva contraseña que ingresó no es la misma que la del campo de entrada de confirmación!", // func/queries/updateAccount.php
     );
 ?>

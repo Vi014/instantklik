@@ -94,70 +94,78 @@
             $newPassword = $_POST['newPassword'];
             $newPwdHash  = password_hash($newPassword, PASSWORD_DEFAULT);
 
-            if(!password_verify($newPassword, $pwdHash))
+            if($newPassword == $_POST['confirm'])
             {
-                $checkLength  = (strlen($newPassword) >= 8);
-                $checkNumber  = (preg_match("#[0-9]+#", $newPassword));
-                $checkUpper   = (preg_match("#[A-Z]+#", $newPassword));
-                $checkLower   = (preg_match("#[a-z]+#", $newPassword));
-                $checkSpecial = (preg_match("#[\W]+#", $newPassword));
-
-                if($checkLength && $checkNumber && $checkUpper && $checkLower && $checkSpecial)
+                if(!password_verify($newPassword, $pwdHash))
                 {
-                    $query = "UPDATE Korisnik 
-                              SET Password = ? 
-                              WHERE Username = ?";
-                    $stmt = $connection->prepare($query);
-                    $stmt->bind_param('ss', $newPwdHash, $_SESSION['username']);
-                    $stmt->execute();
-                    $errorCode = mysqli_stmt_errno($stmt);
-                    
-                    if(!$errorCode)
-                    {
-                        $lang[52];
+                    $checkLength  = (strlen($newPassword) >= 8);
+                    $checkNumber  = (preg_match("#[0-9]+#", $newPassword));
+                    $checkUpper   = (preg_match("#[A-Z]+#", $newPassword));
+                    $checkLower   = (preg_match("#[a-z]+#", $newPassword));
+                    $checkSpecial = (preg_match("#[\W]+#", $newPassword));
 
-                        $_SESSION['password'] = $newPwdHash;
-                        if(isset($_COOKIE['username']))
+                    if($checkLength && $checkNumber && $checkUpper && $checkLower && $checkSpecial)
+                    {
+                        $query = "UPDATE Korisnik 
+                                  SET Password = ? 
+                                  WHERE Username = ?";
+                        $stmt = $connection->prepare($query);
+                        $stmt->bind_param('ss', $newPwdHash, $_SESSION['username']);
+                        $stmt->execute();
+                        $errorCode = mysqli_stmt_errno($stmt);
+                        
+                        if(!$errorCode)
                         {
-                            setcookie("password", $newPwdHash, time()+60*60*24*30*6, "/");
+                            $lang[52];
+
+                            $_SESSION['password'] = $newPwdHash;
+                            if(isset($_COOKIE['username']))
+                            {
+                                setcookie("password", $newPwdHash, time()+60*60*24*30*6, "/");
+                            }
+                        }
+                        else
+                        {
+                            echo $lang[53]." $errorCode";
+                            $updatesSuccessful = false;
                         }
                     }
                     else
                     {
-                        echo $lang[53]." $errorCode";
+                        echo $lang[67]."<br>";
+
+                        if($checkLength) echo $lang[73];
+                        else echo $lang[74];
+                        echo $lang[68]."<br>";
+
+                        if($checkNumber) echo $lang[73];
+                        else echo $lang[74];
+                        echo $lang[69]."<br>";
+
+                        if($checkUpper) echo $lang[73];
+                        else echo $lang[74];
+                        echo $lang[70]."<br>";
+
+                        if($checkLower) echo $lang[73];
+                        else echo $lang[74];
+                        echo $lang[71]."<br>";
+
+                        if($checkSpecial) echo $lang[73];
+                        else echo $lang[74];
+                        echo $lang[72]."<br>";
+
                         $updatesSuccessful = false;
                     }
                 }
                 else
                 {
-                    echo $lang[67]."<br>";
-
-                    if($checkLength) echo $lang[73];
-                    else echo $lang[74];
-                    echo $lang[68]."<br>";
-
-                    if($checkNumber) echo $lang[73];
-                    else echo $lang[74];
-                    echo $lang[69]."<br>";
-
-                    if($checkUpper) echo $lang[73];
-                    else echo $lang[74];
-                    echo $lang[70]."<br>";
-
-                    if($checkLower) echo $lang[73];
-                    else echo $lang[74];
-                    echo $lang[71]."<br>";
-
-                    if($checkSpecial) echo $lang[73];
-                    else echo $lang[74];
-                    echo $lang[72]."<br>";
-
+                    echo $lang[58];
                     $updatesSuccessful = false;
                 }
             }
             else
             {
-                echo $lang[58];
+                echo $lang[76];
                 $updatesSuccessful = false;
             }
         }

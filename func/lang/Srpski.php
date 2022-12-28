@@ -75,6 +75,8 @@
         "Šifra mora imati bar jedno malo slovo u sebi.",
         "Šifra mora imati bar jedan znak u sebi.",
         "✅",
-        "❌"
+        "❌",
+        "Potvrdite novu šifru", // editProfile.php
+        "Nova šifra koju ste uneli se ne poklapa sa šifrom u polju za potvrdu!" // func/queries/updateAccount.php
     );
 ?>

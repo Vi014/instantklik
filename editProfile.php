@@ -49,6 +49,7 @@
                 echo "  <input type='password' name='confirmPass' required='true' placeholder='".$lang[43]."'>";
                 echo "  <input type='text'     name='newUsername' placeholder='".$lang[44]."'>";
                 echo "  <input type='password' name='newPassword' placeholder='".$lang[45]."'>";
+                echo "  <input type='password' name='confirm'     placeholder='".$lang[75]."'>";
                 echo "  <input type='submit'   value='".$lang[46]."'>";
                 echo "</form>";
 

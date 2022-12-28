@@ -75,6 +75,8 @@
         "It must have at least one lowercase letter in it.",
         "It must have at least one special character in it.",
         "✅",
-        "❌"
+        "❌",
+        "Confirm new password", // editProfile.php
+        "The new password you entered does not match the one in the confirm password field!" // func/queries/updateAccount.php
     );
 ?>
