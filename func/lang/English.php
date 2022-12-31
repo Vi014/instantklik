@@ -38,7 +38,7 @@
         "previous page",
         "Profile successfully updated! You will be returned to the profile editing page soon...", // func/queries/executeProfileUpdate.php
         "An error has occurred: code",
-        "The profile you're looking for doesn't exist.", // func/queries/listLinkedProfiles.php
+        "The profile you're looking for doesn't exist.", // func/queries/displayProfile.php
         "Remove", // func/queries/listOwnLinkedProfiles.php 
         "Update data",
         "Add new link", // func/queries/listProfileTypes.php
@@ -77,6 +77,16 @@
         "✅",
         "❌",
         "Confirm new password", // editProfile.php
-        "The new password you entered does not match the one in the confirm password field!" // func/queries/updateAccount.php
+        "The new password you entered does not match the one in the confirm password field!", // func/queries/updateAccount.php
+        "Profile picture: ", // editProfile.php
+        "Upload new profile picture: ",
+        "The image you uploaded is too large! Profile pictures can\'t be larger than 4 MB.", // js/script.js
+        "The file format of your image isn\'t allowed! Profile pictures must be in PNG, JPEG, or GIF format.",
+        "Update profile picture", // editProfile.php 
+        "Profile picture successfully updated! You will be returned to the profile editing page soon...", // func/queries/updateAvatar.php
+        "An error has occurred: code",
+        "Remove profile picture", //editProfile.php
+        "Profile picture successfully removed! You will be returned to the profile editing page soon...", // func/queries/updateAvatar.php
+        "An error has occurred: code"
     );
 ?>

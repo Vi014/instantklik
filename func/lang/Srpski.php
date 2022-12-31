@@ -38,7 +38,7 @@
         "prethodnu stranicu",
         "Profil uspešno ažuriran! Uskoro ćete biti vraćeni na stranicu za izmenu povezanih naloga...", // func/queries/executeProfileUpdate.php
         "Došlo je do greške: kod",
-        "Korisnik sa traženim imenom ne posotoji.", // func/queries/listLinkedProfiles.php
+        "Korisnik sa traženim imenom ne posotoji.", // func/queries/displayProfile.php
         "Obriši", // func/queries/listOwnLinkedProfiles.php 
         "Unos podataka",
         "Dodaj novi link", // func/queries/listProfileTypes.php
@@ -77,6 +77,16 @@
         "✅",
         "❌",
         "Potvrdite novu šifru", // editProfile.php
-        "Nova šifra koju ste uneli se ne poklapa sa šifrom u polju za potvrdu!" // func/queries/updateAccount.php
+        "Nova šifra koju ste uneli se ne poklapa sa šifrom u polju za potvrdu!", // func/queries/updateAccount.php
+        "Profilna slika: ", // editProfile.php
+        "Postavite novu profilnu sliku: ",
+        "Slika koju ste postavili je prevelika. Profilne slike ne smeju biti veće od 4 MB.", // js/script.js
+        "Slika koju ste postavili je u neprihvatljivom formatu. Profilne slike moraju biti u PNG, JPG ili GIF formatu.",
+        "Ažuriraj profilnu sliku", // editProfile.php 
+        "Profilna slika uspešno ažurirana! Uskoro ćete biti vraćeni na stranicu za izmenu profila...", // func/queries/updateAvatar.php
+        "Došlo je do greške: kod",
+        "Ukloni profilnu sliku", //editProfile.php
+        "Profilna slika uspešno obrisana! Uskoro ćete biti vraćeni na stranicu za izmenu profila...", // func/queries/updateAvatar.php
+        "Došlo je do greške: kod"
     );
 ?>

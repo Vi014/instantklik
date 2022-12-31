@@ -38,7 +38,7 @@
         "página anterior",
         "¡Perfil actualizado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/executeProfileUpdate.php
         "Un error ha ocurrido: código",
-        "No hay una cuenta con ese nombre de usario.", // func/queries/listLinkedProfiles.php
+        "No hay una cuenta con ese nombre de usario.", // func/queries/displayProfile.php
         "Eliminar", // func/queries/listOwnLinkedProfiles.php 
         "Actualizar los datos",
         "Añadir nuevo enlace", // func/queries/listProfileTypes.php
@@ -78,5 +78,15 @@
         "❌",
         "Confirmar nueva contraseña", // editProfile.php
         "¡La nueva contraseña que ingresó no es la misma que la del campo de entrada de confirmación!", // func/queries/updateAccount.php
+        "Avatar: ", // editProfile.php
+        "Subir nuevo avatar: ",
+        "¡La imágen que usted ha subido es demasiado grande! Los avatares no pueden ser más grande de 4 MB.", // js/script.js
+        "¡El formato del imágen que usted ha subido está prohibido! Los avatares tienen que ser en el formato PNG, JPEG o GIF.",
+        "Actualizar avatar", // editProfile.php 
+        "¡Avatar actualizado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/updateAvatar.php
+        "Un error ha ocurrido: código",
+        "Borrar avatar", //editProfile.php
+        "¡Avatar borrado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/updateAvatar.php
+        "Un error ha ocurrido: código"
     );
 ?>

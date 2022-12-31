@@ -15,4 +15,6 @@
         echo $langName;
         echo "</div>";
     }
+
+    echo "<br>";
 ?>

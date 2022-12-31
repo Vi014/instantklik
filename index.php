@@ -37,7 +37,6 @@
 	</head>
 
 	<body>
-		<button onclick="foo()"></button>
 		<?php
 			include_once $cfg->ROOT_PATH."/func/listLanguages.php";
 
@@ -55,7 +54,7 @@
 			if(isset($_SERVER['PATH_INFO']))
 			{
 				$_SESSION['profile'] = ltrim($_SERVER['PATH_INFO'], '/');
-				include_once $cfg->ROOT_PATH."/func/queries/listLinkedProfiles.php";
+				include_once $cfg->ROOT_PATH."/func/queries/displayProfile.php";
 			}
 		?>
 	</body>

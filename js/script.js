@@ -1,8 +1,3 @@
-function foo()
-{
-    if(window.jQuery) alert('ima ga'); else alert('nema ga');
-}
-
 function changeLanguage(langName, ROOT_PATH, ROOT_URL, errorMessage)
 {
     $.ajax
@@ -41,4 +36,26 @@ function deleteLinkedProfile(NalogID, ROOT_PATH, ROOT_URL, errorMessage)
             }
         }
     );
+}
+
+function checkSize(fileSize, sizeError, extError)
+{
+    var uploadBtn = $('#uploadBtn');
+    
+    if(fileSize>4)
+    {
+        alert(sizeError);
+        uploadBtn.val('');
+        return;
+    }
+    
+    var fileName = uploadBtn.val();
+    var extIndex = fileName.lastIndexOf('.') + 1;
+    var fileExt  = fileName.substr(extIndex, fileName.length).toLowerCase();
+
+    if(fileExt != 'png' && fileExt != 'gif' && fileExt != 'jpg' && fileExt != 'jpeg' && fileExt != 'jfif' && fileExt != 'pjpeg' && fileExt != 'pjp')
+    {
+        alert(extError);
+        uploadBtn.val('');
+    }
 }
