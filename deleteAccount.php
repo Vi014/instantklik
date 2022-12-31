@@ -25,8 +25,8 @@
             $jQueryUrl = str_replace("/", "\/", $jQueryUrl);
         ?>
 		
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-        <script defer>!window.jQuery && document.write('<script src="<?php echo $jQueryUrl; ?>"><\/script>')</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>!window.jQuery && document.write('<script src="<?php echo $jQueryUrl; ?>"><\/script>')</script>
 
 		<?php
 			$scriptUrl = $cfg->ROOT_URL."/js/script.js";

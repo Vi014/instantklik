@@ -1,3 +1,8 @@
+function foo()
+{
+    if(window.jQuery) alert('ima ga'); else alert('nema ga');
+}
+
 function changeLanguage(langName, ROOT_PATH, ROOT_URL, errorMessage)
 {
     $.ajax
