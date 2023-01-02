@@ -9,9 +9,9 @@
     $username = $_SESSION['username'];
     $password = $_POST['confirmPass'];
 
-    $query = "SELECT Korisnik.Password 
-              FROM Korisnik 
-              WHERE Korisnik.Username = ?";
+    $query = "SELECT user.password 
+              FROM user 
+              WHERE user.username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -20,7 +20,7 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $pwdHash = $row['Password']; // sifra za sve placeholder naloge je "password"
+        $pwdHash = $row['password']; // sifra za sve placeholder naloge je "password"
     }
 
     if(password_verify($password, $pwdHash))
@@ -36,8 +36,8 @@
                 if(ctype_alnum(str_replace($aValid, '', $newUsername)))
                 {
                     $query = "SELECT * 
-                              FROM Korisnik 
-                              WHERE Korisnik.Username = ?";
+                              FROM user 
+                              WHERE user.username = ?";
                     $stmt = $connection->prepare($query);
                     $stmt->bind_param('s', $newUsername);
                     $stmt->execute();
@@ -46,9 +46,9 @@
             
                     if($rowCount == 0)
                     {
-                        $query = "UPDATE Korisnik 
-                                  SET Username = ? 
-                                  WHERE Username = ?";
+                        $query = "UPDATE user 
+                                  SET username = ? 
+                                  WHERE username = ?";
                         $stmt = $connection->prepare($query);
                         $stmt->bind_param('ss', $newUsername, $username);
                         $stmt->execute();
@@ -106,9 +106,9 @@
 
                     if($checkLength && $checkNumber && $checkUpper && $checkLower && $checkSpecial)
                     {
-                        $query = "UPDATE Korisnik 
-                                  SET Password = ? 
-                                  WHERE Username = ?";
+                        $query = "UPDATE user 
+                                  SET password = ? 
+                                  WHERE username = ?";
                         $stmt = $connection->prepare($query);
                         $stmt->bind_param('ss', $newPwdHash, $_SESSION['username']);
                         $stmt->execute();

@@ -8,9 +8,9 @@
 
     $username = $_SESSION['username'];
 
-    $query = "SELECT Avatar 
-              FROM Korisnik
-              WHERE Username = ?";
+    $query = "SELECT avatar 
+              FROM user
+              WHERE username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -18,7 +18,7 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $imgName = $row['Avatar'];
+        $imgName = $row['avatar'];
         if(isset($imgName))
         {
             unlink($cfg->ROOT_PATH."/images/userAvatars/".$imgName);
@@ -39,9 +39,9 @@
 
     move_uploaded_file($tempname, $fullPath);
 
-    $query = "UPDATE Korisnik 
-              SET Avatar = ? 
-              WHERE Username = ?";
+    $query = "UPDATE user 
+              SET avatar = ? 
+              WHERE username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('ss', $newFilename, $username);
     $stmt->execute();

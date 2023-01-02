@@ -6,6 +6,6 @@
         'serverName' => 'localhost',
         'uidServer' => 'root',
         'pwdServer' => '',
-        'databaseName' => 'instantklikbak'
+        'databaseName' => 'instantklik'
     );
 ?>

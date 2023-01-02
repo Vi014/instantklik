@@ -87,6 +87,12 @@
         "Un error ha ocurrido: código",
         "Borrar avatar", //editProfile.php
         "¡Avatar borrado con éxito! Regresará a la página de editar el perfil pronto...", // func/queries/updateAvatar.php
+        "Un error ha ocurrido: código",
+        "Nombre", // register.php
+        "Un error ha ocurrido: su nombre tiene que tener entre 1 y 50 carácteres.", // func/queries/createAccount.php
+        "Cambiar nombre", // editProfile.php
+        "Un error ha ocurrido: su nuevo nombre tiene que tener entre 1 y 50 carácteres.", // func/queries/changeDisplayName.php
+        "¡Nombre actualizado con éxito! Regresará a la página de editar el perfil pronto...",
         "Un error ha ocurrido: código"
     );
 ?>

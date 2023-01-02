@@ -26,8 +26,8 @@
 				if(ctype_alnum(str_replace($aValid, '', $username)))
 				{
 					$query = "SELECT * 
-							  FROM Korisnik 
-							  WHERE Korisnik.Username = ?";
+							  FROM user 
+							  WHERE user.username = ?";
 					$stmt = $connection->prepare($query);
 					$stmt->bind_param('s', $username);
 					$stmt->execute();
@@ -36,27 +36,36 @@
 				
 					if($rowCount == 0)
 					{
-						$query = "INSERT INTO korisnik (username, password) VALUES 
-									(?, ?)";
-						$stmt = $connection->prepare($query);
-						$stmt->bind_param('ss', $username, $pwdHash);
-						$stmt->execute();
-						$errorCode = mysqli_stmt_errno($stmt);
-						
-						if(!$errorCode)
+						$displayName = $_POST['displayName'];
+
+						if(strlen($displayName) >= 1 && strlen($displayName) <= 50)
 						{
-							$_SESSION['username'] = $username;
-							$_SESSION['password'] = $pwdHash;
-							setcookie("username", $username, time()+60*60*24*30*6, "/");
-							setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
-				
-							echo $lang[25];
-				
-							header("Location: $cfg->ROOT_URL/editProfile.php");
+							$query = "INSERT INTO user (username, password, displayName) VALUES 
+									  (?, ?, ?)";
+							$stmt = $connection->prepare($query);
+							$stmt->bind_param('sss', $username, $pwdHash, $displayName);
+							$stmt->execute();
+							$errorCode = mysqli_stmt_errno($stmt);
+							
+							if(!$errorCode)
+							{
+								$_SESSION['username'] = $username;
+								$_SESSION['password'] = $pwdHash;
+								setcookie("username", $username, time()+60*60*24*30*6, "/");
+								setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
+					
+								echo $lang[25];
+					
+								header("Location: $cfg->ROOT_URL/editProfile.php");
+							}
+							else
+							{
+								echo $lang[26]." $errorCode";
+							}
 						}
 						else
 						{
-							echo $lang[26]." $errorCode";
+							echo $lang[88];
 						}
 					}
 					else

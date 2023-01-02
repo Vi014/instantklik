@@ -8,7 +8,7 @@
 
     $username = $_SESSION['username'];
 
-    $query = "SELECT avatar 
+    $query = "SELECT displayName 
               FROM user
               WHERE username = ?";
     $stmt = $connection->prepare($query);
@@ -18,15 +18,11 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $imgName = $row['avatar'];
-        if(isset($imgName))
-        {
-            $imgUrl = $cfg->ROOT_URL."/images/userAvatars/".$imgName;
-        } 
-        else 
-        {
-            $imgUrl = $cfg->ROOT_URL."/images/userAvatars/"."default.png";
-        }
-        echo "<img style='height: 150px; width: 150px; object-fit: cover;' src='$imgUrl'>";
+        $displayName = $row['displayName'];
+
+        echo "<form action='$cfg->ROOT_URL/func/queries/changeDisplayName.php' method='post'>";
+        echo "  <input type='text' name='newDisplayName' required='true' value='$displayName'>";
+        echo "  <input type='submit' value='".$lang[89]."'>";
+        echo "</form>";
     }
 ?>

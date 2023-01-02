@@ -12,8 +12,8 @@
         
         $username = $_SESSION['username'];
 
-        $query = "DELETE FROM Korisnik 
-                  WHERE Korisnik.Username = ?";
+        $query = "DELETE FROM user 
+                  WHERE user.username = ?";
         $stmt = $connection->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();

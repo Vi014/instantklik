@@ -8,9 +8,9 @@
 
     $username = $_SESSION['username'];
 
-    $query = "SELECT Avatar 
-              FROM Korisnik
-              WHERE Username = ?";
+    $query = "SELECT avatar 
+              FROM user
+              WHERE username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -18,13 +18,13 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $imgName = $row['Avatar'];
+        $imgName = $row['avatar'];
         unlink($cfg->ROOT_PATH."/images/userAvatars/".$imgName);
     }
 
-    $query = "UPDATE Korisnik 
-              SET Avatar = NULL 
-              WHERE Username = ?";
+    $query = "UPDATE user 
+              SET avatar = NULL 
+              WHERE username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();

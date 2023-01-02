@@ -18,14 +18,14 @@ function changeLanguage(langName, ROOT_PATH, ROOT_URL, errorMessage)
     );
 }
 
-function deleteLinkedProfile(NalogID, ROOT_PATH, ROOT_URL, errorMessage)
+function deleteLinkedProfile(accountID, ROOT_PATH, ROOT_URL, errorMessage)
 {
     $.ajax
     (
         {
             type: 'POST',
             url: ROOT_URL + '/func/queries/deleteLinkedProfile.php',
-            data: "NalogID=" + NalogID,
+            data: "accountID=" + accountID,
             success: function(data) 
             {
                 window.location = ROOT_URL + '/editProfile.php';
@@ -58,4 +58,9 @@ function checkSize(fileSize, sizeError, extError)
         alert(extError);
         uploadBtn.val('');
     }
+}
+
+function foo()
+{
+    alert('a');
 }

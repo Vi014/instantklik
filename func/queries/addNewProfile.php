@@ -6,13 +6,13 @@
 
 	include_once $cfg->ROOT_PATH."/func/startup.php";
 
-    $tipID = $_POST['TipID'];
+    $typeID = $_POST['typeID'];
     $link = $_POST['link'];
     $username = $_SESSION['username'];
 
-    $query = "SELECT Korisnik.KorisnikID 
-              FROM Korisnik 
-              WHERE Korisnik.Username = ?";
+    $query = "SELECT user.userID 
+              FROM user 
+              WHERE user.username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -20,15 +20,15 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $korisnikID = $row['KorisnikID'];
+        $userID = $row['userID'];
     }
 
 
 
-    $query = "INSERT INTO Nalog(KorisnikID, TipID, Link) VALUES 
+    $query = "INSERT INTO account (userID, typeID, link) VALUES 
               (?, ?, ?)";
     $stmt = $connection->prepare($query);
-    $stmt->bind_param('iis', $korisnikID, $tipID, $link);
+    $stmt->bind_param('iis', $userID, $typeID, $link);
     $stmt->execute();
     $errorCode = mysqli_stmt_errno($stmt);
 

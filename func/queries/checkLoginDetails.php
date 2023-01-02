@@ -9,9 +9,9 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT Korisnik.Username, Korisnik.Password 
-              FROM Korisnik 
-              WHERE Korisnik.Username = ?";
+    $query = "SELECT user.username, user.password 
+              FROM user 
+              WHERE user.username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -22,7 +22,7 @@
 	{
         while($row = mysqli_fetch_assoc($result))
         {
-            $pwdHash = $row['Password']; // the password for all placeholder accounts is either "password" or "P@ssword1"
+            $pwdHash = $row['password']; // the password for all placeholder accounts is either "password" or "P@ssword1"
         }
 
         if(password_verify($password, $pwdHash))

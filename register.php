@@ -41,9 +41,10 @@
             include_once $cfg->ROOT_PATH."/func/listLanguages.php";
 
             echo "<form action='$cfg->ROOT_URL/func/queries/createAccount.php' method='post'>";
-            echo "  <input type='text'     name='username' required='true' placeholder='".$lang[14]."'>";
-            echo "  <input type='password' name='password' required='true' placeholder='".$lang[15]."'>";
-            echo "  <input type='password' name='confirm'  required='true' placeholder='".$lang[41]."'>";
+            echo "  <input type='text'     name='username'     required='true' placeholder='".$lang[14]."'>";
+            echo "  <input type='password' name='password'     required='true' placeholder='".$lang[15]."'>";
+            echo "  <input type='password' name='confirm'      required='true' placeholder='".$lang[41]."'>";
+            echo "  <input type='text'     name='displayName'  required='true' placeholder='".$lang[87]."'>";
             echo "  <input type='submit' value='".$lang[16]."'>";
 		    echo "</form>";
         ?>

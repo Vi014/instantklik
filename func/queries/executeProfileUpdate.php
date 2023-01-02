@@ -6,18 +6,18 @@
 
 	include_once $cfg->ROOT_PATH."/func/startup.php";
 
-    $nalozi = $_SESSION['Nalozi'];
+    $linkedAccounts = $_SESSION['linkedAccounts'];
 
-    for ($i=0; $i < count($nalozi); $i++) 
+    for ($i=0; $i < count($linkedAccounts); $i++) 
     { 
-        $trenutanID = $nalozi[$i];
-        $link = $_POST[$trenutanID];
+        $currentID = $linkedAccounts[$i];
+        $link = $_POST[$currentID];
 
-        $query = "UPDATE Nalog 
-                  SET Link = ? 
-                  WHERE NalogID = ?";
+        $query = "UPDATE account 
+                  SET link = ? 
+                  WHERE accountID = ?";
         $stmt = $connection->prepare($query);
-        $stmt->bind_param('si', $link, $trenutanID);
+        $stmt->bind_param('si', $link, $currentID);
         $stmt->execute();
         $errorCode = mysqli_stmt_errno($stmt);
 

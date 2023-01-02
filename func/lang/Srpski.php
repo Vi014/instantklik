@@ -87,6 +87,12 @@
         "Došlo je do greške: kod",
         "Ukloni profilnu sliku", //editProfile.php
         "Profilna slika uspešno obrisana! Uskoro ćete biti vraćeni na stranicu za izmenu profila...", // func/queries/updateAvatar.php
+        "Došlo je do greške: kod",
+        "Ime", // register.php
+        "Greška, ime mora biti između 1 i 50 karaktera dugo.", // func/queries/createAccount.php
+        "Promenite ime", // editProfile.php
+        "Greška, novo ime mora biti između 1 i 50 karaktera dugo.", // func/queries/changeDisplayName.php
+        "Ime uspešno ažurirano! Uskoro ćete biti vraćeni na stranicu za izmenu profila...",
         "Došlo je do greške: kod"
     );
 ?>

@@ -9,12 +9,12 @@
     echo "<form action='$cfg->ROOT_URL/func/queries/executeProfileUpdate.php' method='post'>";
     
     $username = $_SESSION['username'];
-    $_SESSION['Nalozi'] = array();
+    $_SESSION['linkedAccounts'] = array();
 
-    $query = "SELECT Nalog.NalogID, TipNaloga.ImeTipa, Nalog.Link 
-              FROM Korisnik INNER JOIN Nalog ON Korisnik.KorisnikID = Nalog.KorisnikID 
-                            INNER JOIN TipNaloga ON nalog.TipID = TipNaloga.TipID 
-              WHERE Korisnik.Username = ?";
+    $query = "SELECT account.accountID, type.typeName, account.link 
+              FROM user INNER JOIN account ON user.userID = account.userID 
+                        INNER JOIN type    ON account.typeID = type.typeID 
+              WHERE user.username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param('s', $username);
     $stmt->execute();
@@ -22,15 +22,15 @@
 
     while($row = mysqli_fetch_assoc($result))
     {
-        $nalogID = $row['NalogID'];
-        $imeTipa = $row['ImeTipa'];
-        $link 	 = $row['Link'];
+        $accountID = $row['accountID'];
+        $typeName  = $row['typeName'];
+        $link 	   = $row['link'];
 
-        array_push($_SESSION['Nalozi'], $nalogID);
+        array_push($_SESSION['linkedAccounts'], $accountID);
         
-        echo $imeTipa;
-        echo "<input type='text' name='$nalogID' value='$link'>";
-        echo "<input type='button' onclick=\"deleteLinkedProfile($nalogID, '$cfg->ROOT_PATH', '$cfg->ROOT_URL', '".$lang[18]."')\" value='".$lang[38]."'>";
+        echo $typeName;
+        echo "<input type='text' name='$accountID' value='$link'>";
+        echo "<input type='button' onclick=\"deleteLinkedProfile($accountID, '$cfg->ROOT_PATH', '$cfg->ROOT_URL', '".$lang[18]."')\" value='".$lang[38]."'>";
         echo "<br>";
     }
 

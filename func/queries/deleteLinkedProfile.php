@@ -6,19 +6,20 @@
 
 	include_once $cfg->ROOT_PATH."/func/startup.php";
 
-    $nalogID = $_REQUEST['NalogID'];
+    $accountID = $_REQUEST['accountID'];
 
-    $query = "DELETE FROM Nalog 
-              WHERE NalogID = ?";
+    
+    $query = "DELETE FROM account 
+              WHERE accountID = ?";
     $stmt = $connection->prepare($query);
-    $stmt->bind_param('i', $nalogID);
+    $stmt->bind_param('i', $accountID);
     $stmt->execute();
     $errorCode = mysqli_stmt_errno($stmt);
 
     if (!$errorCode)
     {
         echo $lang[28]." <br>";
-        header("Location: $cfg->ROOT_URL/editProfile.php");
+        // header("Location: $cfg->ROOT_URL/editProfile.php");
     }
     else
     {

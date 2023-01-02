@@ -64,6 +64,10 @@
 
                 echo "<br><br>";
 
+                include_once $cfg->ROOT_PATH."/func/queries/getOwnDisplayName.php";
+
+                echo "<br><br>";
+
                 echo "<form action='$cfg->ROOT_URL/func/queries/updateAccount.php' method='post'>";
                 echo "  <input type='password' name='confirmPass'  required='true' placeholder='".$lang[43]."'>";
                 echo "  <input type='text'     name='newUsername'  placeholder='".$lang[44]."'>";

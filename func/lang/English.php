@@ -87,6 +87,12 @@
         "An error has occurred: code",
         "Remove profile picture", //editProfile.php
         "Profile picture successfully removed! You will be returned to the profile editing page soon...", // func/queries/updateAvatar.php
+        "An error has occurred: code",
+        "Display name", // register.php
+        "Error: Your display name must be between 1 and 50 characters long.", // func/queries/createAccount.php
+        "Change display name", // editProfile.php
+        "Error: Your new display name must be between 1 and 50 characters long.", // func/queries/changeDisplayName.php
+        "Display name successfully updated! You will be returned to the profile editing page soon...",
         "An error has occurred: code"
     );
 ?>
