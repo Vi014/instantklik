@@ -93,6 +93,8 @@
         "Promenite ime", // editProfile.php
         "Greška, novo ime mora biti između 1 i 50 karaktera dugo.", // func/queries/changeDisplayName.php
         "Ime uspešno ažurirano! Uskoro ćete biti vraćeni na stranicu za izmenu profila...",
-        "Došlo je do greške: kod"
+        "Došlo je do greške: kod",
+        "Ovaj korisnik je banovan.", // func/queries/displayProfile.php
+        "Nalog u koji se pokušavate ulogovati je banovan!" // func/queries/checkLoginDetails.php
     );
 ?>

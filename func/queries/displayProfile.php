@@ -25,55 +25,66 @@
 		{
 			$username 	 = $row['username'];
 			$displayName = $row['displayName'];
+			$banned 	 = $row['banned'];
+		}
 
+		if(!$banned)
+		{
 			echo "<br>";
 			echo "<h1 style='font-size: xx-large;'>$displayName</h1>";
 			echo "<br>";
 			echo "<h2 style='font-size: large;'>@$username</h2>";
 			echo "<br>";
-		}
 
-		$query = "SELECT avatar 
-				  FROM user
-				  WHERE username = ?";
-		$stmt = $connection->prepare($query);
-		$stmt->bind_param('s', $profile);
-		$stmt->execute();
-		$result = $stmt->get_result();
+			$query = "SELECT avatar 
+					  FROM user
+					  WHERE username = ?";
+			$stmt = $connection->prepare($query);
+			$stmt->bind_param('s', $profile);
+			$stmt->execute();
+			$result = $stmt->get_result();
 
-		while($row = mysqli_fetch_assoc($result))
-		{
-			$imgName = $row['avatar'];
-			if(isset($imgName))
+			while($row = mysqli_fetch_assoc($result))
 			{
-				$imgUrl = $cfg->ROOT_URL."/images/userAvatars/".$imgName;
-			} 
-			else 
-			{
-				$imgUrl = $cfg->ROOT_URL."/images/userAvatars/"."default.png";
+				$imgName = $row['avatar'];
+				if(isset($imgName))
+				{
+					$imgUrl = $cfg->ROOT_URL."/images/userAvatars/".$imgName;
+				} 
+				else 
+				{
+					$imgUrl = $cfg->ROOT_URL."/images/userAvatars/"."default.png";
+				}
+				echo "<img style='height: 150px; width: 150px; object-fit: cover;' src='$imgUrl'>";
 			}
-			echo "<img style='height: 150px; width: 150px; object-fit: cover;' src='$imgUrl'>";
-		}
 
-		echo "<br>";
+			echo "<br>";
 
-		$query = "SELECT type.typeName, account.link 
-              	  FROM user INNER JOIN account ON user.userID	 = account.userID 
-              				INNER JOIN type    ON account.typeID = type.typeID 
-			  	  WHERE user.username = ?";
-		$stmt = $connection->prepare($query);
-		$stmt->bind_param('s', $profile);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		
-		while($row = mysqli_fetch_assoc($result))
-		{
-			$imeTipa = $row['typeName'];
-			$link 	 = $row['link'];
-
-			$imgUrl = $cfg->ROOT_URL."/images/sites/".$imeTipa.".png";
+			$query = "SELECT type.typeName, account.link 
+					  FROM user INNER JOIN account ON user.userID	 = account.userID 
+								INNER JOIN type    ON account.typeID = type.typeID 
+					  WHERE user.username = ?";
+			$stmt = $connection->prepare($query);
+			$stmt->bind_param('s', $profile);
+			$stmt->execute();
+			$result = $stmt->get_result();
 			
-			echo "<a href='$link'><img style='height: 50px; width: 50px;' src='$imgUrl'></a> <br>";
+			while($row = mysqli_fetch_assoc($result))
+			{
+				$imeTipa = $row['typeName'];
+				$link 	 = $row['link'];
+
+				$imgUrl = $cfg->ROOT_URL."/images/sites/".$imeTipa.".png";
+				
+				echo "<a href='$link'><img style='height: 50px; width: 50px;' src='$imgUrl'></a> <br>";
+			}
+		}
+		else
+		{
+			echo "<br>";
+			echo "<h2 style='font-size: large;'>@$username</h2>";
+			echo "<br>";
+			echo $lang[93];
 		}
 	}
 	else

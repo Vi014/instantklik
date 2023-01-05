@@ -47,8 +47,8 @@
             $cookiePassword = $_COOKIE['password'];
 
             $query = "SELECT * 
-                      FROM Korisnik 
-                      WHERE Korisnik.Username = ? AND Korisnik.Password = ?";
+                      FROM user 
+                      WHERE user.username = ? AND user.password = ?";
             $stmt = $connection->prepare($query);
             $stmt->bind_param('ss', $cookieUsername, $cookiePassword);
             $stmt->execute();
@@ -62,6 +62,34 @@
             }
             else 
             {
+                setcookie('username', 'asdf', 1, "/");
+                setcookie('password', 'asdf', 1, "/");
+            }
+        }
+        
+        if(isset($_SESSION['username']))
+        {
+            $username = $_SESSION['username'];
+            $password = $_SESSION['password'];
+
+            $query = "SELECT user.banned 
+                      FROM user 
+                      WHERE user.username = ? AND user.password = ?";
+            $stmt = $connection->prepare($query);
+            $stmt->bind_param('ss', $username, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            while($row = mysqli_fetch_assoc($result))
+            {
+                $banned = $row['banned'];
+            }
+
+            if($banned)
+            {
+                unset($_SESSION['username']);
+                unset($_SESSION['password']);
+
                 setcookie('username', 'asdf', 1, "/");
                 setcookie('password', 'asdf', 1, "/");
             }

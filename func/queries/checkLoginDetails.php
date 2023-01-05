@@ -9,7 +9,7 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT user.username, user.password 
+    $query = "SELECT user.username, user.password, user.banned 
               FROM user 
               WHERE user.username = ?";
     $stmt = $connection->prepare($query);
@@ -23,26 +23,34 @@
         while($row = mysqli_fetch_assoc($result))
         {
             $pwdHash = $row['password']; // the password for all placeholder accounts is either "password" or "P@ssword1"
+            $banned  = $row['banned'];
         }
 
-        if(password_verify($password, $pwdHash))
+        if(!$banned)
         {
-            echo $lang[22];
-
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $pwdHash;
-            
-            if(isset($_POST['rememberMe']))
+            if(password_verify($password, $pwdHash))
             {
-                setcookie("username", $username, time()+60*60*24*30*6, "/");
-                setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
+                echo $lang[22];
+    
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $pwdHash;
+                
+                if(isset($_POST['rememberMe']))
+                {
+                    setcookie("username", $username, time()+60*60*24*30*6, "/");
+                    setcookie("password", $pwdHash,  time()+60*60*24*30*6, "/");
+                }
+    
+                header("Location: $cfg->ROOT_URL/editProfile.php");
             }
-
-            header("Location: $cfg->ROOT_URL/editProfile.php");
+            else
+            {
+                echo $lang[23];
+            }
         }
         else
         {
-            echo $lang[23];
+            echo $lang[94];
         }
 	}
 	else
