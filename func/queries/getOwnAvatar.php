@@ -25,7 +25,7 @@
         } 
         else 
         {
-            $imgUrl = $cfg->ROOT_URL."/images/userAvatars/"."default.svg"; // source: https://freesvg.org/users-profile-icon
+            $imgUrl = $cfg->ROOT_URL."/images/userAvatars/"."default.svg";
         }
         echo "<img style='height: 150px; width: 150px; object-fit: cover;' src='$imgUrl'>";
     }
