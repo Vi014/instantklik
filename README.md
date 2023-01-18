@@ -1,5 +1,5 @@
 # instantklik
-image sources:
-flags and "other": twemoji
-logos: official brand kits and wikimedia commons
+image sources: <br>
+flags and "other": twemoji <br>
+logos: official brand kits and wikimedia commons <br>
 default user avatar: https://freesvg.org/users-profile-icon
