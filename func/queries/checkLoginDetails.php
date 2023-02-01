@@ -22,7 +22,7 @@
 	{
         while($row = mysqli_fetch_assoc($result))
         {
-            $pwdHash = $row['password']; // the password for all placeholder accounts is either "password" or "P@ssword1"
+            $pwdHash = $row['password']; // the password for all placeholder accounts is "P@ssword1"
             $banned  = $row['banned'];
         }
 
