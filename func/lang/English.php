@@ -95,6 +95,8 @@
         "Display name successfully updated! You will be returned to the profile editing page soon...",
         "An error has occurred: code",
         "This user has been banned.", // func/queries/displayProfile.php
-        "You are trying to log into a banned account!" // func/queries/checkLoginDetails.php
+        "You are trying to log into a banned account!", // func/queries/checkLoginDetails.php
+        "You aren't an administrator!", // admin.php
+        "Administration" // index.php
     );
 ?>

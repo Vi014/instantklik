@@ -95,6 +95,8 @@
         "¡Nombre actualizado con éxito! Regresará a la página de editar el perfil pronto...",
         "Un error ha ocurrido: código",
         "Este usuario está baneado.", // func/queries/displayProfile.php
-        "¡La cuenta que intentan usar está baneada!" // func/queries/checkLoginDetails.php
+        "¡La cuenta que intentan usar está baneada!", // func/queries/checkLoginDetails.php
+        "¡Usted no es un administrator!", // admin.php
+        "Administración" // index.php
     );
 ?>

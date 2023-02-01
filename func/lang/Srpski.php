@@ -95,6 +95,8 @@
         "Ime uspešno ažurirano! Uskoro ćete biti vraćeni na stranicu za izmenu profila...",
         "Došlo je do greške: kod",
         "Ovaj korisnik je banovan.", // func/queries/displayProfile.php
-        "Nalog u koji se pokušavate ulogovati je banovan!" // func/queries/checkLoginDetails.php
+        "Nalog u koji se pokušavate ulogovati je banovan!", // func/queries/checkLoginDetails.php
+        "Vi niste administrator!", // admin.php
+        "Administracija" // index.php
     );
 ?>

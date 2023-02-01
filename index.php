@@ -43,6 +43,12 @@
 			if(isset($_SESSION['username']))
 			{
 				echo "<a href='$cfg->ROOT_URL/editProfile.php'>".$lang[1]."</a>";
+
+				if(include $cfg->ROOT_PATH."/func/queries/adminLogin.php")
+				{
+					echo "<br>";
+					echo "<a href='$cfg->ROOT_URL/admin.php'>".$lang[96]."</a>";
+				}
 			}
 			else
 			{
