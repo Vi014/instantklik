@@ -41,7 +41,12 @@
    
     if($connection)
     {
-        if(!isset($_SESSION['password']) && isset($_COOKIE['password']))
+        // we're checking if the account name and password stored in the session and/or cookie are valid (by seeing if querying the database for them returns a row)
+        // because if the username in the cookie somehow happens to refer to an invalid account [e.g. account name changed from another device, or the account getting deleted] the site will break
+        // also, we log the user out if they've changed their password from a different device
+        // finally, we check if the user has gotten banned
+
+        if(!isset($_SESSION['password']) && isset($_COOKIE['password'])) // the first check is if there is nothing in the session but there is something in the cookie, and if the account exists the data will be transfered to the session
         {
             $cookieUsername = $_COOKIE['username'];
             $cookiePassword = $_COOKIE['password'];
@@ -67,7 +72,7 @@
             }
         }
         
-        if(isset($_SESSION['username']))
+        if(isset($_SESSION['username'])) // next we check the session, first for account existence (necessary for the edge case of the user changing their username while they have a different browser where they're logged in open), and after that to see if the account is banned
         {
             $username = $_SESSION['username'];
             $password = $_SESSION['password'];
@@ -76,16 +81,29 @@
                       FROM user 
                       WHERE user.username = ? AND user.password = ?";
             $stmt = $connection->prepare($query);
-            $stmt->bind_param('ss', $username, $password);
+            $stmt->bind_param('ss', $username, $password); // using bind_param and ?s instead of just inserting strings sanitizes input/prevents sql injection
             $stmt->execute();
             $result = $stmt->get_result();
+            $rowCount = $result->num_rows;
 
-            while($row = mysqli_fetch_assoc($result))
+            if($rowCount > 0)
             {
-                $banned = $row['banned'];
-            }
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    $banned = $row['banned'];
+                }
 
-            if($banned)
+                if($banned)
+                {
+                    unset($_SESSION['username']);
+                    unset($_SESSION['password']);
+
+                    setcookie('username', 'asdf', 1, "/");
+                    setcookie('password', 'asdf', 1, "/");
+                }
+                // finally, if the user isn't banned, we let the session and cookie stay as is
+            }
+            else 
             {
                 unset($_SESSION['username']);
                 unset($_SESSION['password']);
